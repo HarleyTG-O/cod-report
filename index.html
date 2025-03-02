@@ -16,12 +16,16 @@
         }
         header {
             background-color: #ff0000;
-            padding: 15px;
+            padding: 25px; /* Increased padding */
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
         h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: 32px; /* Increased font size */
         }
         nav ul {
             list-style-type: none;
@@ -60,10 +64,15 @@
             padding: 10px;
             background-color: #ff0000;
         }
+        .logo {
+            width: 40px;
+            height: 40px;
+        }
     </style>
 </head>
 <body>
     <header>
+        <img src="Images/logo.png" alt="Logo" class="logo">
         <h1>Call of Duty Cheater Reporting</h1>
         <nav>
             <ul>
