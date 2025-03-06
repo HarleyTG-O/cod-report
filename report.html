@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Cheater</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Full height layout */
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Centered card container */
+        .container {
+            width: 95%;
+            max-width: 1000px;
+            height: 90vh;
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* Header styling */
+        header {
+            background-color: #ff0000;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        nav ul li a.disabled {
+            color: #888;
+            pointer-events: none;
+        }
+
+        /* Main content area */
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .form-container {
+            background-color: #2e2e2e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #3a3a3a;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffcc00;
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            padding: 10px;
+            background-color: #ff0000;
+            text-align: center;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #ffcc00;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Notification Banner */
+        .notification {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 15px;
+            margin: 10px auto;
+            width: 90%;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Report a Cheater</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="disabled">Report a Cheater</a></li>
+                    <li><a href="reports.html">View Reports</a></li>
+                    <li><a href="#" class="disabled">Login</a></li>
+                    <li><a href="#" class="disabled">Register</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Notification Banner -->
+        <div class="notification">
+            🚧 <span>This website is currently under construction. Please join our 
+                <a href="https://discord.gg/qwxFqfsNdR" style="color: #000; font-weight: bold;">Discord</a> 
+                for updates and support.</span> 🚧
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="form-container">
+                <h2>Submit a Report</h2>
+                <form action="submit_report.php" method="POST">
+                    <label for="activision_id">Activision ID:</label>
+                    <input type="text" id="activision_id" name="activision_id" required>
+
+                    <label for="game">Game:</label>
+                    <select id="game" name="game" required>
+                        <option value="MW2">Modern Warfare 2</option>
+                        <option value="MW3">Modern Warfare 3</option>
+                        <option value="BO6">Black Ops 6</option>
+                    </select>
+
+                    <label for="evidence">Evidence (URL):</label>
+                    <input type="url" id="evidence" name="evidence" required>
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+
+                    <button type="submit">Submit Report</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 CoD Cheater Reports. All rights reserved.</p>
+            <p>Website owned and managed by <a href="https://harleytg.online" target="_blank">HarleyTG</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
