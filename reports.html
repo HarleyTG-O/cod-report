@@ -123,9 +123,11 @@
                 <a href="https://discord.gg/qwxFqfsNdR" style="color: #000; font-weight: bold;">Discord</a> 
                 for updates and support.</span> 🚧
         </div>
-<div class="content">
-    <h2>View Reports</h2>
-    <p>Below are the latest reports of suspected cheaters.</p>
+        <div class="content">
+            <h2>View Reports</h2>
+            <p>Below are the latest reports of suspected cheaters.</p>
+            <input class="search-bar" type="text" id="searchInput" placeholder="Search by cheater name..." onkeyup="searchReports()">
+            <div id="reportList">
     <div class="report">
         <h3>Cheater: Killshot301318#9152507</h3>
         <p>Game: MW2 - DMZ</p>
@@ -293,7 +295,25 @@
 <footer>
     <p>&copy; 2025 CoD Cheater Reports. All rights reserved.</p>
 </footer>
-</div>
+    <script>
+        function searchReports() {
+            var input, filter, reportList, reports, h3, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            reportList = document.getElementById('reportList');
+            reports = reportList.getElementsByClassName('report');
+
+            for (i = 0; i < reports.length; i++) {
+                h3 = reports[i].getElementsByTagName("h3")[0];
+                txtValue = h3.textContent || h3.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    reports[i].style.display = "";
+                } else {
+                    reports[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
 
