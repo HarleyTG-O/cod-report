@@ -389,19 +389,40 @@
 
     <script>
         function searchReports() {
-            var input, filter, reportList, reports, h3, i, txtValue;
+            var input, filter, reportList, reports, h3, i, txtValue, resultsFound = false;
             input = document.getElementById('searchInput');
             filter = input.value.toUpperCase();
             reportList = document.getElementById('reportList');
             reports = reportList.getElementsByClassName('report');
-
+    
+            // Loop through all report divs and hide those that don't match the search query
             for (i = 0; i < reports.length; i++) {
-                h3 = reports[i].getElementsByTagName("h3")[0];
-                txtValue = h3.textContent || h3.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    reports[i].style.display = "";
-                } else {
-                    reports[i].style.display = "none";
+                h3 = reports[i].getElementsByTagName('h3')[0];
+                if (h3) {
+                    txtValue = h3.textContent || h3.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        reports[i].style.display = ""; // Show the report
+                        resultsFound = true;
+                    } else {
+                        reports[i].style.display = "none"; // Hide the report
+                    }
+                }
+            }
+    
+            // If no results are found, show a message (only if it's not already displayed)
+            if (!resultsFound) {
+                var existingMessage = document.querySelector('.no-results');
+                if (!existingMessage) {
+                    var noResultsMessage = document.createElement('div');
+                    noResultsMessage.classList.add('no-results');
+                    noResultsMessage.innerText = "No cheater by that name here!";
+                    document.querySelector('.content').appendChild(noResultsMessage);
+                }
+            } else {
+                // Remove "No results" message if there are any matching reports
+                var noResultsMessage = document.querySelector('.no-results');
+                if (noResultsMessage) {
+                    noResultsMessage.remove();
                 }
             }
         }
