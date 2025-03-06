@@ -395,7 +395,13 @@
             filter = input.value.toUpperCase();
             reportList = document.getElementById('reportList');
             reports = reportList.getElementsByClassName('report');
-    
+            
+            // Clear previous no-result card if present
+            var existingNoResultCard = document.querySelector('.no-result-card');
+            if (existingNoResultCard) {
+                existingNoResultCard.remove();
+            }
+        
             // Loop through all report divs and hide those that don't match the search query
             for (i = 0; i < reports.length; i++) {
                 h3 = reports[i].getElementsByTagName('h3')[0];
@@ -409,22 +415,13 @@
                     }
                 }
             }
-    
-            // If no results are found, show a message (only if it's not already displayed)
-            if (!resultsFound) {
-                var existingMessage = document.querySelector('.no-results');
-                if (!existingMessage) {
-                    var noResultsMessage = document.createElement('div');
-                    noResultsMessage.classList.add('no-results');
-                    noResultsMessage.innerText = "No cheater by that name here!";
-                    document.querySelector('.content').appendChild(noResultsMessage);
-                }
-            } else {
-                // Remove "No results" message if there are any matching reports
-                var noResultsMessage = document.querySelector('.no-results');
-                if (noResultsMessage) {
-                    noResultsMessage.remove();
-                }
+        
+            // If no result is found, show "No cheater by that name here!" card styled as a report card
+            if (!resultsFound && filter !== "") {
+                var noResultCard = document.createElement('div');
+                noResultCard.classList.add('report'); // Apply report card styling
+                noResultCard.innerHTML = '<h3>No cheater by that name here!</h3><p>The cheater you\'re looking for does not exist in the reports.</p>';
+                reportList.appendChild(noResultCard);
             }
         }
     </script>
