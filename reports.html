@@ -112,17 +112,6 @@
             color: #fff;
             font-size: 16px;
         }
-        .total-cheaters {
-            background-color: #ffcc00;
-            color: #000;
-            padding: 15px;
-            margin: 20px auto;
-            width: 90%;
-            border-radius: 8px;
-            font-weight: bold;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -144,11 +133,6 @@
             🚧 <span>This website is currently under construction. Please join our 
                 <a href="https://discord.gg/qwxFqfsNdR" style="color: #000; font-weight: bold;">Discord</a> 
                 for updates and support.</span> 🚧
-        </div>
-
-        <!-- Total Cheaters Card -->
-        <div class="total-cheaters">
-            <h2>Total Cheaters Reported: <span id="totalCheaters">0</span></h2>
         </div>
         
         <div class="content">
@@ -489,10 +473,6 @@
                 noResultCard.innerHTML = '<h3>No cheater by that name here!</h3><p>The cheater you\'re looking for does not exist in the reports.</p>';
                 reportList.appendChild(noResultCard);
             }
-    document.addEventListener("DOMContentLoaded", function () {
-        const reportCount = document.querySelectorAll("#reportList .report").length;
-        document.getElementById("cheaterCount").textContent = reportCount;
-    });
         }
     </script>
 </body>
