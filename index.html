@@ -103,21 +103,17 @@
             margin: 0 auto 10px;
         }
 
-        /* Smaller card for Facebook and Off Discord Reporting */
-        .report-card {
+        /* Smaller card for ToS and Privacy Policy */
+        .info-card {
             background-color: #2e2e2e;
-            padding: 10px 15px;
+            padding: 15px;
             margin-top: 15px;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-            width: 80%; /* Smaller width */
+            width: 45%;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        .report-card h3 {
-            margin-bottom: 10px;
-            font-size: 20px;
+            text-align: center;
         }
 
         .btn {
@@ -136,14 +132,53 @@
             background-color: #ffcc00;
         }
 
-        /* Footer is now at the bottom inside the container */
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .modal-header {
+            font-size: 24px;
+            color: #ff0000;
+        }
+
+        .modal-body {
+            color: #fff;
+        }
+
+        .close-btn {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Footer */
         footer {
             padding: 10px;
             background-color: #ff0000;
             text-align: center;
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
-            margin-top: auto; /* Ensures it stays at the bottom */
+            margin-top: auto;
         }
 
         footer a {
@@ -182,13 +217,120 @@
         <div class="content">
             <h2>Welcome to the Call of Duty Cheater Reporting System</h2>
             <img src="Images/logo.png" alt="Logo" class="logo">
+
+            <!-- Info Cards for ToS and Privacy Policy -->
+            <div class="info-card">
+                <h3>Terms of Service</h3>
+                <a href="#" class="btn" id="tosBtn">View ToS</a>
+            </div>
+            <div class="info-card">
+                <h3>Privacy Policy</h3>
+                <a href="#" class="btn" id="policyBtn">View Privacy Policy</a>
+            </div>
         </div>
 
-        <!-- Footer now stays at bottom of the card -->
+        <!-- Modal for ToS -->
+        <div id="tosModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Terms of Service</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Terms of Service (ToS)
+
+1. Introduction
+Welcome to COD Cheater Report Online (cod.cheater-report.online). By accessing or using our platform, you agree to these Terms of Service. Please read them carefully. This platform is designed for reporting known cheats in Call of Duty games.
+
+2. User Responsibilities
+- Users must provide accurate and truthful information when submitting reports regarding cheats in Call of Duty games.
+- Misuse or violation of these terms, including false reporting or attempting to exploit the system, may result in the removal of reports or temporary bans from using the platform.
+
+3. Prohibited Activities
+- Users may not engage in any illegal activities on the platform.
+- Exploiting, abusing, or manipulating the reporting system is strictly prohibited.
+- Submitting false or misleading reports is forbidden and may lead to penalties, including removal of reports or banning from the platform.
+
+4. Report Submission
+- Reports should only be submitted for known cheats or cheating activities in Call of Duty games.
+- We reserve the right to remove any report that does not meet our criteria or violates these terms.
+- Any attempts to manipulate or abuse the reporting system may result in consequences, including being banned from the platform.
+
+5. Changes to Terms
+- We may update these Terms of Service at any time.
+- Continued use of COD Cheater Report Online after any changes constitutes acceptance of the updated terms.
+
+For further inquiries, please contact us through our official channels.
+</p>
+                </div>
+                <button class="close-btn" id="closeTosBtn">Close</button>
+            </div>
+        </div>
+
+        <!-- Modal for Privacy Policy -->
+        <div id="policyModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Privacy Policy</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Privacy Policy
+
+1. Information We Collect
+- We collect user-provided data such as usernames, reports, and uploaded evidence.
+- We may collect usage data for analytics and security purposes.
+
+2. How We Use Your Information
+- To process reports and maintain platform integrity.
+- To improve our services and user experience.
+
+3. Data Sharing and Protection
+- We do not sell user data to third parties.
+- We implement security measures to protect your data.
+
+4. Your Rights
+- You have the right to request data access and deletion.
+- You may contact us to update or remove your data.
+
+5. Changes to Privacy Policy
+- We may modify this policy as needed.
+- Changes will be communicated through our platform.
+</p>
+                </div>
+                <button class="close-btn" id="closePolicyBtn">Close</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
         <footer>
             <p>&copy; 2025 CoD Cheater Reports. All rights reserved.</p>
         </footer>
     </div>
 
+    <script>
+        // Modal display logic
+        const tosBtn = document.getElementById('tosBtn');
+        const policyBtn = document.getElementById('policyBtn');
+        const tosModal = document.getElementById('tosModal');
+        const policyModal = document.getElementById('policyModal');
+        const closeTosBtn = document.getElementById('closeTosBtn');
+        const closePolicyBtn = document.getElementById('closePolicyBtn');
+
+        tosBtn.addEventListener('click', () => {
+            tosModal.style.display = 'flex';
+        });
+
+        policyBtn.addEventListener('click', () => {
+            policyModal.style.display = 'flex';
+        });
+
+        closeTosBtn.addEventListener('click', () => {
+            tosModal.style.display = 'none';
+        });
+
+        closePolicyBtn.addEventListener('click', () => {
+            policyModal.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
+
