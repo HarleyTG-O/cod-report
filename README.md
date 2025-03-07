@@ -1,4 +1,4 @@
-# cod-report
+# cod-cheater-report
 
 Deleloping a cod report user website so everyone can see Known cheaters
 
