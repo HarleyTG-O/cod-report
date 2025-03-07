@@ -226,18 +226,18 @@
         
             <!-- Info Cards for ToS and Privacy Policy -->
             <div class="info-cards">
+            <div class="info-card">
                 <h3>Terms of Service</h3>
                 <p>We recommend viewing on a desktop for the best experience.</p>
                 <a href="#" class="btn" id="tosBtn">Read Terms of Service</a>
             </div>
-            <div class="info-cards">
+            <div class="info-card">
                 <h3>Privacy Policy</h3>
                 <p>For optimal viewing, please access on a desktop.</p>
                 <a href="#" class="btn" id="policyBtn">Read Privacy Policy</a>
             </div>
         </div>
-
-
+    </div>
         <!-- Modal for ToS -->
         <div id="tosModal" class="modal">
             <div class="modal-content">
@@ -279,59 +279,47 @@
                 <div class="modal-body">
                     <p>
                         <strong>Privacy Policy</strong><br>
-                        <strong>1. Information We Collect</strong><br>
-                        - We collect user-provided data such as usernames, reports, and uploaded evidence.<br>
-                        - We may collect usage data for analytics and security purposes.<br><br>
-                        <strong>2. How We Use Your Information</strong><br>
-                        - To process reports and maintain platform integrity.<br>
-                        - To improve our services and user experience.<br><br>
-                        <strong>3. Data Sharing and Protection</strong><br>
-                        - We do not sell user data to third parties.<br>
-                        - We implement security measures to protect your data.<br><br>
-                        <strong>4. Your Rights</strong><br>
-                        - You have the right to request data access and deletion.<br>
-                        - You may contact us to update or remove your data.<br><br>
-                        <strong>5. Changes to Privacy Policy</strong><br>
-                        - We may modify this policy as needed.<br>
-                        - Changes will be communicated through our platform.
+                        <strong>1. Information Collection</strong><br>
+                        We collect personal information when you report a cheater, including your Discord username, Activision ID, and details about the reported cheater. This information is used solely for the purpose of processing your report and ensuring the integrity of the platform.<br>
+                        <strong>2. Data Usage</strong><br>
+                        Your information will not be shared with third parties without your consent, except as required by law or to protect the integrity of the platform.<br>
+                        <strong>3. Cookies and Tracking</strong><br>
+                        We use cookies to improve your experience on our website. These cookies may track your activity for analytics purposes.<br>
+                        <strong>4. Data Retention</strong><br>
+                        Your data will be stored in our secure database for as long as necessary to process reports and comply with legal obligations.<br>
+                        <strong>5. Security</strong><br>
+                        We take reasonable steps to protect your personal data from unauthorized access or disclosure. However, no method of transmission over the internet is 100% secure.<br>
+                        <strong>6. Changes to Privacy Policy</strong><br>
+                        We may update this Privacy Policy at any time. Any changes will be communicated via the platform.<br><br>
+                        For further inquiries regarding our Privacy Policy, please contact us.
                     </p>
                 </div>
                 <button class="close-btn" id="closePolicyBtn">Close</button>
             </div>
         </div>
 
-        <!-- Footer -->
         <footer>
-            <p>&copy; 2025 CoD Cheater Reports. All rights reserved.</p>
+            <p>&copy; 2025 COD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
         </footer>
     </div>
 
     <script>
-        // Modal display logic
-        const tosBtn = document.getElementById('tosBtn');
-        const policyBtn = document.getElementById('policyBtn');
-        const tosModal = document.getElementById('tosModal');
-        const policyModal = document.getElementById('policyModal');
-        const closeTosBtn = document.getElementById('closeTosBtn');
-        const closePolicyBtn = document.getElementById('closePolicyBtn');
-
-        tosBtn.addEventListener('click', () => {
-            tosModal.style.display = 'flex';
+        // Modal control script
+        document.getElementById("tosBtn").addEventListener("click", function() {
+            document.getElementById("tosModal").style.display = "flex";
         });
 
-        policyBtn.addEventListener('click', () => {
-            policyModal.style.display = 'flex';
+        document.getElementById("policyBtn").addEventListener("click", function() {
+            document.getElementById("policyModal").style.display = "flex";
         });
 
-        closeTosBtn.addEventListener('click', () => {
-            tosModal.style.display = 'none';
+        document.getElementById("closeTosBtn").addEventListener("click", function() {
+            document.getElementById("tosModal").style.display = "none";
         });
 
-        closePolicyBtn.addEventListener('click', () => {
-            policyModal.style.display = 'none';
+        document.getElementById("closePolicyBtn").addEventListener("click", function() {
+            document.getElementById("policyModal").style.display = "none";
         });
     </script>
-
 </body>
 </html>
-
