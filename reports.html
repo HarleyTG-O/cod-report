@@ -138,7 +138,7 @@
         <div class="content">
             <h2>View Reports</h2>
             <p>Below are the latest reports of suspected cheaters.</p>
-            <input class="search-bar" type="text" id="searchInput" placeholder="Search by cheater name..." onkeyup="searchReports()">
+            <input class="search-bar" type="text" id="searchInput" placeholder="Search by Cheater Name..." onkeyup="searchReports()">
             <div id="reportList">
                 <div class="report">
                     <h3>Cheater: Clown#6798281</h3>
@@ -470,7 +470,7 @@
             if (!resultsFound && filter !== "") {
                 var noResultCard = document.createElement('div');
                 noResultCard.classList.add('report'); // Apply report card styling
-                noResultCard.innerHTML = '<h3>No cheater by that name here!</h3><p>The cheater you\'re looking for does not exist in the reports.</p>';
+                noResultCard.innerHTML = '<h3>Cheater Report(s) Not Found</h3><p>No reports exist for this player. Please verify the name and try again.</p>';
                 reportList.appendChild(noResultCard);
             }
         }
