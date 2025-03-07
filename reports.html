@@ -489,10 +489,9 @@
                 noResultCard.innerHTML = '<h3>No cheater by that name here!</h3><p>The cheater you\'re looking for does not exist in the reports.</p>';
                 reportList.appendChild(noResultCard);
             }
-                // Count total reports dynamically
-    document.addEventListener("DOMContentLoaded", function() {
-        let totalCheaters = document.querySelectorAll('.report').length;
-        document.getElementById('totalCheaters').textContent = totalCheaters;
+    document.addEventListener("DOMContentLoaded", function () {
+        const reportCount = document.querySelectorAll("#reportList .report").length;
+        document.getElementById("cheaterCount").textContent = reportCount;
     });
         }
     </script>
