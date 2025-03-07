@@ -103,19 +103,6 @@
             margin: 0 auto 10px;
         }
 
-        /* Smaller card for ToS and Privacy Policy */
-        .info-card {
-            background-color: #2e2e2e;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-            width: 45%;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
         .btn {
             display: inline-block;
             background-color: #ff0000;
@@ -172,8 +159,6 @@
             margin-top: 10px;
         }
 
-
-
         /* Footer */
         footer {
             padding: 10px;
@@ -193,6 +178,23 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Flexbox for info cards side by side */
+        .info-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: nowrap; /* Ensure they stay side by side without wrapping */
+        }
+
+        .info-card {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            width: 48%; /* Cards take up 48% of the width */
+            text-align: left;
+        }
+
     </style>
 </head>
 <body>
@@ -222,13 +224,15 @@
             <img src="Images/logo.png" alt="Logo" class="logo">
 
             <!-- Info Cards for ToS and Privacy Policy -->
-            <div class="info-card">
-                <h3>Terms of Service</h3>
-                <a href="#" class="btn" id="tosBtn">View ToS</a>
-            </div>
-            <div class="info-card">
-                <h3>Privacy Policy</h3>
-                <a href="#" class="btn" id="policyBtn">View Privacy Policy</a>
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>Terms of Service</h3>
+                    <a href="#" class="btn" id="tosBtn">View ToS</a>
+                </div>
+                <div class="info-card">
+                    <h3>Privacy Policy</h3>
+                    <a href="#" class="btn" id="policyBtn">View Privacy Policy</a>
+                </div>
             </div>
         </div>
 
@@ -325,6 +329,7 @@
             policyModal.style.display = 'none';
         });
     </script>
+
 </body>
 </html>
 
