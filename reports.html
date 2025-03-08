@@ -626,7 +626,7 @@
     // Call the function on page load
     updateTotalCheaters();
 
-        function sortByName(ascending) {
+        function sortByName(ascending = true) {
             let reportList = document.getElementById("reportList");
             let reports = Array.from(reportList.children);
             reports.sort((a, b) => {
