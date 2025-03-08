@@ -167,6 +167,7 @@
         
         <div class="content">
             <h2>View Reports</h2>
+            <h3 id="totalCheaters">Total Cheaters Reported: 0</h3>
             <p>Below are the latest reports of suspected cheaters.</p>
             <input class="search-bar" type="text" id="searchInput" placeholder="Search by Cheater Name..." onkeyup="searchReports()">
             
@@ -477,6 +478,14 @@
     </div>
 
     <script>
+            function updateTotalCheaters() {
+        const reports = document.querySelectorAll('.report');
+        document.getElementById('totalCheaters').textContent = `Total Cheaters Reported: ${reports.length}`;
+    }
+
+    // Call the function on page load
+    updateTotalCheaters();
+        
         function searchReports() {
             var input, filter, reportList, reports, h3, i, txtValue, resultsFound = false;
             input = document.getElementById('searchInput');
