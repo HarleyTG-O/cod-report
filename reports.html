@@ -583,6 +583,10 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            sortByName(true);  // A-Z (ascending) by default on page load
+        });
+        
         function searchReports() {
             var input, filter, reportList, reports, h3, i, txtValue, resultsFound = false;
             input = document.getElementById('searchInput');
