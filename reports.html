@@ -254,44 +254,63 @@
             reports.forEach(report => reportList.appendChild(report));
         }
 
-           async function fetchDatabase() {
-      // Load SQL.js
-      const SQL = await initSqlJs({ locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}` });
+ async function fetchDatabase() {
+    // Load SQL.js
+    const SQL = await initSqlJs({ locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}` });
 
-      // Fetch the database file from GitHub (raw URL)
-      const response = await fetch('https://raw.githubusercontent.com/HarleyTG-O/cod-report/main/reports.db');
-      const buffer = await response.arrayBuffer();
-
-      // Load the database into SQL.js
-      const db = new SQL.Database(new Uint8Array(buffer));
-
-      // Execute SQL query to fetch reports
-      const result = db.exec("SELECT * FROM reports");
-
-      // Get the data from the query result
-      const rows = result[0].values;
-
-      // Display the reports
-      const reportList = document.getElementById('reportList');
-      rows.forEach(row => {
-        const reportDiv = document.createElement('div');
-        reportDiv.classList.add('report');
-
-        reportDiv.innerHTML = `
-          <h3>Cheater: ${row[1]}</h3>
-          <p>Game: ${row[2]}</p>
-          <p>Reported for: ${row[3]}</p>
-          <p>Evidence: <a href="${row[4]}" target="_blank">View Evidence</a></p>
-          <p>Submitted by: ${row[5]}</p>
-          <p>Timestamp: ${row[6]}</p>
-        `;
-
-        reportList.appendChild(reportDiv);
-      });
+    // Fetch the database file from GitHub (raw URL)
+    const response = await fetch('https://raw.githubusercontent.com/HarleyTG-O/cod-report/main/reports.db');
+    if (!response.ok) {
+      console.error("Failed to fetch database:", response.status);
+      return;
     }
 
-    // Call the function to fetch the database and display reports
-    fetchDatabase().catch(err => console.error("Error fetching or parsing database:", err));
+    const buffer = await response.arrayBuffer();
+
+    // Load the database into SQL.js
+    const db = new SQL.Database(new Uint8Array(buffer));
+
+    // Execute SQL query to fetch reports
+    const result = db.exec("SELECT * FROM reports");
+
+    // If the query returns no results, display an error
+    if (!result || !result[0].values || result[0].values.length === 0) {
+      console.log("No reports found in the database.");
+      return;
+    }
+
+    // Get the data from the query result
+    const rows = result[0].values;
+
+    // Display the reports
+    const reportList = document.getElementById('reportList');
+    rows.forEach(row => {
+      const reportDiv = document.createElement('div');
+      reportDiv.classList.add('report');
+
+      reportDiv.innerHTML = `
+        <h3>Cheater: ${row[1]}</h3>
+        <p>Game: ${row[2]}</p>
+        <p>Reported for: ${row[3]}</p>
+        <p>Evidence: <a href="${row[4]}" target="_blank">View Evidence</a></p>
+        <p>Submitted by: ${row[5]}</p>
+        <p>Timestamp: ${row[6]}</p>
+      `;
+
+      reportList.appendChild(reportDiv);
+    });
+
+    // Update the total cheaters count
+    updateTotalCheaters();
+  }
+
+  function updateTotalCheaters() {
+    const reports = document.querySelectorAll('.report');
+    document.getElementById('totalCheaters').textContent = `Total Cheaters Reported: ${reports.length}`;
+  }
+
+  // Call the function to fetch the database and display reports
+  fetchDatabase().catch(err => console.error("Error fetching or parsing database:", err));
   </script>
 </body>
 </html>
