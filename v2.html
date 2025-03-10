@@ -3,42 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheater Reports</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Report System</title>
     <style>
-        /* Original styling preserved */
-        body {
-            font-family: Arial, sans-serif;
+        /* Full height layout */
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-        }
-
-        .container {
-            width: 80%;
-            margin: auto;
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Report List */
-        #reportList {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212; /* Dark background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+
+        /* Centered card container with 90% height */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            height: 90vh; /* 90% of the viewport height */
+            background-color: #1e1e1e; /* Dark gray card */
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevents content overflow */
+        }
+
+        header {
+            background-color: #ff0000;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        nav ul li a.disabled {
+            color: #888;
+            pointer-events: none;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
         }
 
         .report {
-            background: #fff;
-            border-radius: 8px;
+            background-color: #2e2e2e;
             padding: 15px;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px auto;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            width: 95%;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease-in-out;
         }
 
         .report:hover {
@@ -46,224 +98,189 @@
         }
 
         .report h3 {
-            font-size: 1.2em;
-            color: #333;
+            margin-bottom: 10px;
+            font-size: 20px;
         }
 
-        .report p {
-            font-size: 1em;
-            color: #666;
+        /* Footer */
+        footer {
+            padding: 10px;
+            background-color: #ff0000;
+            text-align: center;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            margin-top: auto;
         }
 
-        /* Pagination */
-        .pagination {
+        footer a {
+            color: #ffcc00;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Notification Banner */
+        .notification {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 5px;
+            margin: 10px auto;
+            width: 90%;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-bar {
+            margin: 20px auto;
+            padding: 10px;
+            width: 50%;
+            background-color: #2e2e2e;
+            border: 1px solid #555;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .sort-buttons {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            gap: 10px;
+            margin: 20px 0;
         }
 
-        .pagination button {
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            background-color: #fff;
+        .sort-buttons button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            background-color: #ff0000;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
-        .pagination button:hover {
-            background-color: #f1f1f1;
+        .sort-buttons button:hover {
+            background-color: #ffcc00;
+            color: black;
         }
 
-        .pagination button:disabled {
-            background-color: #e0e0e0;
-            cursor: not-allowed;
-        }
-
-        /* Modal */
-        .modal {
+        /* Modal for larger report */
+        .report-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 500px;
+            background-color: #2e2e2e;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 900px;
             width: 80%;
-        }
-
-        .modal-content h2 {
-            margin-top: 0;
-        }
-
-        .close {
-            background-color: #ff5c5c;
             color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-btn {
+            color: #ffcc00;
+            font-size: 24px;
             cursor: pointer;
-            font-size: 1.2em;
+            background: none;
+            border: none;
             position: absolute;
             top: 10px;
             right: 10px;
         }
 
-        /* No results */
-        .no-result-card {
-            padding: 20px;
-            text-align: center;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Reported Cheaters</h1>
+        <header>
+            <h1>Report System</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#" class="disabled">Settings</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <!-- Search Box -->
-        <input type="text" id="searchInput" placeholder="Search for cheater name..." oninput="searchReports()">
+        <div class="content">
+            <!-- Notification Banner -->
+            <div class="notification">New report available! Check it out.</div>
 
-        <!-- Report List -->
-        <div id="reportList"></div>
+            <!-- Search Bar -->
+            <input type="text" class="search-bar" placeholder="Search reports...">
 
-        <!-- Pagination Controls -->
-        <div class="pagination">
-            <button id="prevPage" onclick="changePage(-1)">Previous</button>
-            <button id="nextPage" onclick="changePage(1)">Next</button>
+            <!-- Sort Buttons -->
+            <div class="sort-buttons">
+                <button>Sort by Date</button>
+                <button>Sort by Severity</button>
+            </div>
+
+            <!-- Report Cards -->
+            <div class="report" onclick="openModal('report1')">
+                <h3>Cheating Report - Player123</h3>
+                <p>Reported for aimbot usage during MW2 match.</p>
+            </div>
+            <div class="report" onclick="openModal('report2')">
+                <h3>Cheating Report - Player456</h3>
+                <p>Reported for wallhack usage during Black Ops 6 match.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 <a href="#">HarleyTG</a></p>
+        </footer>
+    </div>
+
+    <!-- Modal for displaying full report -->
+    <div class="report-modal" id="report1">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('report1')">&times;</button>
+            <h2>Full Report - Player123</h2>
+            <p>Evidence: <a href="#">[Link to Video]</a></p>
+            <p>Cheating Method: Aimbot</p>
+            <p>Game: MW2</p>
+            <p>Details: Player was observed using an aimbot during a team match. Evidence video linked above.</p>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div id="reportModal" class="modal">
+    <div class="report-modal" id="report2">
         <div class="modal-content">
-            <button class="close" onclick="closeModal()">X</button>
-            <h2 id="modalName"></h2>
-            <p><strong>Game:</strong> <span id="modalGame"></span></p>
-            <p><strong>Reported for:</strong> <span id="modalReason"></span></p>
-            <p><strong>Timestamp:</strong> <span id="modalTimestamp"></span></p>
+            <button class="close-btn" onclick="closeModal('report2')">&times;</button>
+            <h2>Full Report - Player456</h2>
+            <p>Evidence: <a href="#">[Link to Video]</a></p>
+            <p>Cheating Method: Wallhack</p>
+            <p>Game: Black Ops 6</p>
+            <p>Details: Player was seen through walls using wallhack in multiplayer mode.</p>
         </div>
     </div>
 
     <script>
-        const reportsPerPage = 5;
-        let currentPage = 1;
-
-        // Dummy reports data
-        const reportsData = [
-            { name: "JohnDoe", game: "MW2", reason: "Aimbot", timestamp: "2025-03-01 12:00:00" },
-            { name: "JaneSmith", game: "MW3", reason: "Wallhack", timestamp: "2025-03-01 13:30:00" },
-            { name: "Player123", game: "Black Ops 6", reason: "Speedhack", timestamp: "2025-03-01 14:15:00" },
-            { name: "CheaterXYZ", game: "MW2", reason: "Triggerbot", timestamp: "2025-03-01 15:45:00" },
-            { name: "NoobGamer", game: "MW3", reason: "Aim Assist", timestamp: "2025-03-01 16:00:00" },
-            { name: "HackerPro", game: "Black Ops 6", reason: "ESP", timestamp: "2025-03-01 17:30:00" },
-            { name: "QuickShot", game: "MW2", reason: "Botting", timestamp: "2025-03-01 18:15:00" },
-            { name: "EpicCheater", game: "MW3", reason: "Speedhack", timestamp: "2025-03-01 19:00:00" },
-        ];
-
-        function renderReports() {
-            const reportList = document.getElementById("reportList");
-            reportList.innerHTML = ""; // Clear existing reports
-
-            const start = (currentPage - 1) * reportsPerPage;
-            const end = start + reportsPerPage;
-            const paginatedReports = reportsData.slice(start, end);
-
-            if (paginatedReports.length === 0) {
-                const noResultCard = document.createElement('div');
-                noResultCard.classList.add('no-result-card');
-                noResultCard.textContent = "No reports to display!";
-                reportList.appendChild(noResultCard);
-                return;
-            }
-
-            paginatedReports.forEach(report => {
-                const reportElement = document.createElement('div');
-                reportElement.classList.add('report');
-                reportElement.innerHTML = `
-                    <h3>${report.name}</h3>
-                    <p>Game: ${report.game}</p>
-                    <p>Reported for: ${report.reason}</p>
-                    <p>Timestamp: ${report.timestamp}</p>
-                `;
-                reportElement.onclick = () => openModal(report);
-                reportList.appendChild(reportElement);
-            });
-
-            updatePagination();
+        // Open modal
+        function openModal(reportId) {
+            document.getElementById(reportId).style.display = "flex";
         }
 
-        function openModal(report) {
-            document.getElementById("modalName").textContent = `Cheater: ${report.name}`;
-            document.getElementById("modalGame").textContent = `Game: ${report.game}`;
-            document.getElementById("modalReason").textContent = `Reported for: ${report.reason}`;
-            document.getElementById("modalTimestamp").textContent = `Timestamp: ${report.timestamp}`;
-
-            document.getElementById("reportModal").style.display = "flex";
+        // Close modal
+        function closeModal(reportId) {
+            document.getElementById(reportId).style.display = "none";
         }
-
-        function closeModal() {
-            document.getElementById("reportModal").style.display = "none";
-        }
-
-        function searchReports() {
-            const query = document.getElementById("searchInput").value.toLowerCase();
-            const filteredReports = reportsData.filter(report => 
-                report.name.toLowerCase().includes(query)
-            );
-            renderFilteredReports(filteredReports);
-        }
-
-        function renderFilteredReports(filteredReports) {
-            const reportList = document.getElementById("reportList");
-            reportList.innerHTML = ""; // Clear existing reports
-
-            if (filteredReports.length === 0) {
-                const noResultCard = document.createElement('div');
-                noResultCard.classList.add('no-result-card');
-                noResultCard.textContent = "No reports match your search!";
-                reportList.appendChild(noResultCard);
-                return;
-            }
-
-            filteredReports.forEach(report => {
-                const reportElement = document.createElement('div');
-                reportElement.classList.add('report');
-                reportElement.innerHTML = `
-                    <h3>Cheater: ${report.name}</h3>
-                    <p>Game: ${report.game}</p>
-                    <p>Reported for: ${report.reason}</p>
-                    <p>Timestamp: ${report.timestamp}</p>
-                `;
-                reportElement.onclick = () => openModal(report);
-                reportList.appendChild(reportElement);
-            });
-        }
-
-        function changePage(direction) {
-            currentPage += direction;
-            renderReports();
-        }
-
-        function updatePagination() {
-            const totalPages = Math.ceil(reportsData.length / reportsPerPage);
-            document.getElementById('prevPage').disabled = currentPage === 1;
-            document.getElementById('nextPage').disabled = currentPage === totalPages;
-        }
-
-        // Initial render
-        renderReports();
     </script>
+
 </body>
 </html>
