@@ -15,22 +15,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #121212; /* Dark background */
+            background-color: #121212;
             font-family: Arial, sans-serif;
             text-align: center;
             color: #fff;
         }
-        /* Centered card container with 90% height */
+
         .container {
             width: 90%;
-            max-width: 800px;
-            height: 90vh; /* 90% of the viewport height */
-            background-color: #1e1e1e; /* Dark gray card */
+            max-width: 900px;
+            height: 90vh;
+            background-color: #1e1e1e;
             border-radius: 12px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* Prevents content overflow */
+            overflow: hidden;
         }
 
         header {
@@ -40,10 +40,12 @@
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
         }
+
         h1 {
             margin: 0;
             font-size: 28px;
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
@@ -52,27 +54,28 @@
             justify-content: center;
             gap: 15px;
         }
+
         nav ul li {
             display: inline;
         }
+
         nav ul li a {
             text-decoration: none;
             color: #fff;
             font-weight: bold;
             transition: color 0.3s;
         }
+
         nav ul li a:hover {
             color: #ffcc00;
         }
-        nav ul li a.disabled {
-            color: #888;
-            pointer-events: none;
-        }
+
         .content {
             flex-grow: 1;
             padding: 20px;
             overflow-y: auto;
         }
+
         .report {
             background-color: #2e2e2e;
             padding: 15px;
@@ -81,12 +84,19 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
             text-align: left;
             width: 95%;
+            transition: transform 0.3s ease;
         }
+
+        .report:hover {
+            transform: scale(1.03);
+            background-color: #333;
+        }
+
         .report h3 {
             margin-bottom: 10px;
             font-size: 20px;
         }
-        /* Footer */
+
         footer {
             padding: 10px;
             background-color: #ff0000;
@@ -105,7 +115,7 @@
         footer a:hover {
             text-decoration: underline;
         }
-        /* Notification Banner */
+
         .notification {
             background-color: #ffcc00;
             color: #000;
@@ -116,6 +126,7 @@
             font-weight: bold;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
+
         .search-bar {
             margin: 20px auto;
             padding: 10px;
@@ -125,13 +136,21 @@
             border-radius: 8px;
             color: #fff;
             font-size: 16px;
+            transition: background-color 0.3s;
         }
+
+        .search-bar:focus {
+            background-color: #3c3c3c;
+            outline: none;
+        }
+
         .sort-buttons {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin: 20px 0;
         }
+
         .sort-buttons button {
             padding: 10px;
             border: none;
@@ -142,9 +161,42 @@
             font-weight: bold;
             transition: 0.3s;
         }
+
         .sort-buttons button:hover {
             background-color: #ffcc00;
             color: black;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 8px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pagination button:hover {
+            background-color: #ffcc00;
+            color: black;
+        }
+
+        .no-result-card {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 8px;
+            font-weight: bold;
+            width: 90%;
         }
     </style>
 </head>
@@ -168,7 +220,7 @@
                 <a href="https://discord.gg/qwxFqfsNdR" style="color: #000; font-weight: bold;">Discord</a> 
                 for updates and support.</span> 🚧
         </div>
-        
+
         <div class="content">
             <h2>View Reports</h2>
             <h3 id="totalCheaters">Total Suspected/Known Cheaters Reported: 0</h3>
@@ -181,111 +233,130 @@
                 <button onclick="sortByTimestamp(true)">Newest First</button>
                 <button onclick="sortByTimestamp(false)">Oldest First</button>
             </div>
-            
-            <div id="reportList">
-            <div class="report">
-                <h3>Cheater: Killshot301318#9152507</h3>
-                <p>Game: MW2 - DMZ</p>
-                <p>Reported for: Under Map - Ashika Island</p>
-                <p>Notes: Told me how to and see him in kill cam</p>
-                <p>Submitted by: Admin</p>
-                <p>Timestamp: 2025-03-02 14:59:07</p>
-            </div>
-            
-            <div class="report">
-                <h3>Cheater: superman#4508100</h3>
-                <p>Game: MW2 - DMZ</p>
-                <p>Reported for: Under Map - Ashika Island</p>
-                <p>Notes: No evidence provided</p>
-                <p>Submitted by: Admin</p>
-                <p>Timestamp: 2025-03-02 22:40:51</p>
-            </div>
-            
-            <div class="report">
-                <h3>Cheater: 丕刀卜乙卜人丨凹卜#2083030</h3>
-                <p>Game: MW2 - DMZ</p>
-                <p>Reported for: Aim Bot - Walls - Ect</p>
-                <p>Notes: No evidence provided</p>
-                <p>Submitted by: Admin</p>
-                <p>Timestamp: 2025-03-02 22:42:33</p>
-            </div>
-            
+
+            <div id="reportList"></div>
+
+            <div class="pagination">
+                <button id="prevPage" onclick="changePage(-1)">Previous</button>
+                <button id="nextPage" onclick="changePage(1)">Next</button>
             </div>
         </div>
+
         <footer>
             <p>&copy; 2025 COD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
         </footer>
     </div>
 
     <script>
+        let currentPage = 1;
+        const reportsPerPage = 5;
+        let reportsData = [
+            // Simulate some initial data, in real-world use, this should come from the server.
+            { name: "Killshot301318", game: "MW2 - DMZ", reason: "Under Map - Ashika Island", timestamp: "2025-03-02 14:59:07" },
+            { name: "superman", game: "MW2 - DMZ", reason: "Under Map - Ashika Island", timestamp: "2025-03-02 22:40:51" },
+            { name: "丕刀卜乙卜人丨凹卜", game: "MW2 - DMZ", reason: "Aim Bot - Walls - Ect", timestamp: "2025-03-02 22:42:33" },
+            // Add more test data as necessary
+        ];
+
         document.addEventListener("DOMContentLoaded", () => {
-            sortByName(true);  // A-Z (ascending) by default on page load
-            updateTotalCheaters(); // Update total cheaters count
+            updateTotalCheaters();
+            renderReports();
         });
-        
-        function searchReports() {
-            var input, filter, reportList, reports, h3, i, txtValue, resultsFound = false;
-            input = document.getElementById('searchInput');
-            filter = input.value.toUpperCase();
-            reportList = document.getElementById('reportList');
-            reports = reportList.getElementsByClassName('report');
-            
-            // Clear previous no-result card if present
-            var existingNoResultCard = document.querySelector('.no-result-card');
-            if (existingNoResultCard) {
-                existingNoResultCard.remove();
-            }
-        
-            // Loop through all report divs and hide those that don't match the search query
-            for (i = 0; i < reports.length; i++) {
-                h3 = reports[i].getElementsByTagName('h3')[0];
-                if (h3) {
-                    txtValue = h3.textContent || h3.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        reports[i].style.display = ""; // Show the report
-                        resultsFound = true;
-                    } else {
-                        reports[i].style.display = "none"; // Hide the report
-                    }
-                }
-            }
-        
-            // If no result is found, show "No cheater by that name here!" card styled as a report card
-            if (!resultsFound && filter !== "") {
-                var noResultCard = document.createElement('div');
-                noResultCard.classList.add('report'); // Apply report card styling
-                noResultCard.innerHTML = '<h3>Cheater Report(s) Not Found</h3><p>No reports exist for this player. Please verify the name and try again.</p>';
+
+        function renderReports() {
+            const reportList = document.getElementById("reportList");
+            const start = (currentPage - 1) * reportsPerPage;
+            const end = start + reportsPerPage;
+            const paginatedReports = reportsData.slice(start, end);
+
+            reportList.innerHTML = ""; // Clear existing reports
+
+            if (paginatedReports.length === 0) {
+                const noResultCard = document.createElement('div');
+                noResultCard.classList.add('no-result-card');
+                noResultCard.textContent = "No cheaters found on this page!";
                 reportList.appendChild(noResultCard);
+                return;
             }
+
+            paginatedReports.forEach(report => {
+                const reportElement = document.createElement('div');
+                reportElement.classList.add('report');
+                reportElement.innerHTML = `
+                    <h3>Cheater: ${report.name}</h3>
+                    <p>Game: ${report.game}</p>
+                    <p>Reported for: ${report.reason}</p>
+                    <p>Timestamp: ${report.timestamp}</p>
+                `;
+                reportList.appendChild(reportElement);
+            });
+            updatePagination();
         }
 
         function updateTotalCheaters() {
-            const reports = document.querySelectorAll('.report');
-            document.getElementById('totalCheaters').textContent = `Total Cheaters Reported: ${reports.length}`;
+            document.getElementById('totalCheaters').textContent = `Total Cheaters Reported: ${reportsData.length}`;
         }
 
         function sortByName(ascending = true) {
-            let reportList = document.getElementById("reportList");
-            let reports = Array.from(reportList.children);
-            reports.sort((a, b) => {
-                let nameA = a.querySelector("h3").textContent.toLowerCase();
-                let nameB = b.querySelector("h3").textContent.toLowerCase();
+            reportsData.sort((a, b) => {
+                let nameA = a.name.toLowerCase();
+                let nameB = b.name.toLowerCase();
                 return ascending ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
             });
-            reports.forEach(report => reportList.appendChild(report));
-            updateTotalCheaters(); // Update total after sorting
+            renderReports();
         }
 
-        function sortByTimestamp(ascending) {
-            let reportList = document.getElementById("reportList");
-            let reports = Array.from(reportList.children);
-            reports.sort((a, b) => {
-                let timeA = new Date(a.querySelector("p:last-child").textContent.split(": ")[1]);
-                let timeB = new Date(b.querySelector("p:last-child").textContent.split(": ")[1]);
+        function sortByTimestamp(ascending = true) {
+            reportsData.sort((a, b) => {
+                let timeA = new Date(a.timestamp);
+                let timeB = new Date(b.timestamp);
                 return ascending ? timeA - timeB : timeB - timeA;
             });
-            reports.forEach(report => reportList.appendChild(report));
-            updateTotalCheaters(); // Update total after sorting
+            renderReports();
+        }
+
+        function searchReports() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const filteredReports = reportsData.filter(report => 
+                report.name.toLowerCase().includes(query)
+            );
+            renderFilteredReports(filteredReports);
+        }
+
+        function renderFilteredReports(filteredReports) {
+            const reportList = document.getElementById("reportList");
+            reportList.innerHTML = ""; // Clear existing reports
+
+            if (filteredReports.length === 0) {
+                const noResultCard = document.createElement('div');
+                noResultCard.classList.add('no-result-card');
+                noResultCard.textContent = "No reports match your search!";
+                reportList.appendChild(noResultCard);
+                return;
+            }
+
+            filteredReports.forEach(report => {
+                const reportElement = document.createElement('div');
+                reportElement.classList.add('report');
+                reportElement.innerHTML = `
+                    <h3>Cheater: ${report.name}</h3>
+                    <p>Game: ${report.game}</p>
+                    <p>Reported for: ${report.reason}</p>
+                    <p>Timestamp: ${report.timestamp}</p>
+                `;
+                reportList.appendChild(reportElement);
+            });
+        }
+
+        function changePage(direction) {
+            currentPage += direction;
+            renderReports();
+        }
+
+        function updatePagination() {
+            const totalPages = Math.ceil(reportsData.length / reportsPerPage);
+            document.getElementById('prevPage').disabled = currentPage === 1;
+            document.getElementById('nextPage').disabled = currentPage === totalPages;
         }
     </script>
 </body>
