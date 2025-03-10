@@ -184,7 +184,7 @@
             display: flex;
             justify-content: space-between;
             gap: 20px;
-            flex-wrap: nowrap; /* Ensure they stay side by side without wrapping */
+            flex-wrap: wrap; /* Allow wrapping for mobile */
         }
 
         .info-card {
@@ -193,6 +193,17 @@
             border-radius: 8px;
             width: 48%; /* Cards take up 48% of the width */
             text-align: left;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .info-card {
+                width: 100%; /* Stack the cards on mobile */
+            }
+
+            .modal-content {
+                width: 80%; /* More responsive modal width */
+            }
         }
 
     </style>
@@ -226,18 +237,19 @@
         
             <!-- Info Cards for ToS and Privacy Policy -->
             <div class="info-cards">
-            <div class="info-card">
-                <h3>Terms of Service</h3>
-                <p>We recommend viewing on a desktop for the best experience.</p>
-                <a href="#" class="btn" id="tosBtn">Read Terms of Service</a>
-            </div>
-            <div class="info-card">
-                <h3>Privacy Policy</h3>
-                <p>For optimal viewing, please access on a desktop.</p>
-                <a href="#" class="btn" id="policyBtn">Read Privacy Policy</a>
+                <div class="info-card">
+                    <h3>Terms of Service</h3>
+                    <p>We recommend viewing on a desktop for the best experience.</p>
+                    <a href="#" class="btn" id="tosBtn">Read Terms of Service</a>
+                </div>
+                <div class="info-card">
+                    <h3>Privacy Policy</h3>
+                    <p>For optimal viewing, please access on a desktop.</p>
+                    <a href="#" class="btn" id="policyBtn">Read Privacy Policy</a>
+                </div>
             </div>
         </div>
-    </div>
+
         <!-- Modal for ToS -->
         <div id="tosModal" class="modal">
             <div class="modal-content">
@@ -288,10 +300,8 @@
                         <strong>4. Data Retention</strong><br>
                         Your data will be stored in our secure database for as long as necessary to process reports and comply with legal obligations.<br>
                         <strong>5. Security</strong><br>
-                        We take reasonable steps to protect your personal data from unauthorized access or disclosure. However, no method of transmission over the internet is 100% secure.<br>
-                        <strong>6. Changes to Privacy Policy</strong><br>
-                        We may update this Privacy Policy at any time. Any changes will be communicated via the platform.<br><br>
-                        For further inquiries regarding our Privacy Policy, please contact us.
+                        We take reasonable steps to protect your personal data from unauthorized access or disclosure. However, no security system is completely secure, and we cannot guarantee the security of your data.<br><br>
+                        If you have any questions or concerns regarding our privacy policy, please contact us.
                     </p>
                 </div>
                 <button class="close-btn" id="closePolicyBtn">Close</button>
@@ -299,27 +309,28 @@
         </div>
 
         <footer>
-            <p>&copy; 2025 COD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
+            <p>Created by <a href="https://discord.gg/qwxFqfsNdR" target="_blank">Harley's Team</a></p>
         </footer>
     </div>
 
     <script>
-        // Modal control script
-        document.getElementById("tosBtn").addEventListener("click", function() {
-            document.getElementById("tosModal").style.display = "flex";
+        // Modal functionality
+        document.getElementById('tosBtn').addEventListener('click', function() {
+            document.getElementById('tosModal').style.display = 'flex';
         });
 
-        document.getElementById("policyBtn").addEventListener("click", function() {
-            document.getElementById("policyModal").style.display = "flex";
+        document.getElementById('policyBtn').addEventListener('click', function() {
+            document.getElementById('policyModal').style.display = 'flex';
         });
 
-        document.getElementById("closeTosBtn").addEventListener("click", function() {
-            document.getElementById("tosModal").style.display = "none";
+        document.getElementById('closeTosBtn').addEventListener('click', function() {
+            document.getElementById('tosModal').style.display = 'none';
         });
 
-        document.getElementById("closePolicyBtn").addEventListener("click", function() {
-            document.getElementById("policyModal").style.display = "none";
+        document.getElementById('closePolicyBtn').addEventListener('click', function() {
+            document.getElementById('policyModal').style.display = 'none';
         });
     </script>
+
 </body>
 </html>
