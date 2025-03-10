@@ -84,6 +84,7 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
             text-align: left;
             width: 95%;
+            cursor: pointer;
             transition: transform 0.3s ease;
         }
 
@@ -198,6 +199,47 @@
             font-weight: bold;
             width: 90%;
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #2e2e2e;
+            padding: 30px;
+            border-radius: 8px;
+            width: 70%;
+            max-height: 80%;
+            overflow-y: auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            color: #fff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ffcc00;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -247,34 +289,39 @@
         </footer>
     </div>
 
+    <!-- Modal -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalName"></h3>
+            <p id="modalGame"></p>
+            <p id="modalReason"></p>
+            <p id="modalTimestamp"></p>
+        </div>
+    </div>
+
     <script>
         let currentPage = 1;
         const reportsPerPage = 5;
         let reportsData = [
-            // Simulate some initial data, in real-world use, this should come from the server.
+            // Simulate some initial data
             { name: "Killshot301318", game: "MW2 - DMZ", reason: "Under Map - Ashika Island", timestamp: "2025-03-02 14:59:07" },
             { name: "superman", game: "MW2 - DMZ", reason: "Under Map - Ashika Island", timestamp: "2025-03-02 22:40:51" },
-            { name: "丕刀卜乙卜人丨凹卜", game: "MW2 - DMZ", reason: "Aim Bot - Walls - Ect", timestamp: "2025-03-02 22:42:33" },
-            // Add more test data as necessary
+            { name: "丕刀卜乙卜人丨凹卜", game: "MW2 - DMZ", reason: "Aim Bot - Walls - Ect", timestamp: "2025-03-02 19:34:51" }
         ];
-
-        document.addEventListener("DOMContentLoaded", () => {
-            updateTotalCheaters();
-            renderReports();
-        });
 
         function renderReports() {
             const reportList = document.getElementById("reportList");
+            reportList.innerHTML = ""; // Clear existing reports
+
             const start = (currentPage - 1) * reportsPerPage;
             const end = start + reportsPerPage;
             const paginatedReports = reportsData.slice(start, end);
 
-            reportList.innerHTML = ""; // Clear existing reports
-
             if (paginatedReports.length === 0) {
                 const noResultCard = document.createElement('div');
                 noResultCard.classList.add('no-result-card');
-                noResultCard.textContent = "No cheaters found on this page!";
+                noResultCard.textContent = "No reports to display!";
                 reportList.appendChild(noResultCard);
                 return;
             }
@@ -283,24 +330,35 @@
                 const reportElement = document.createElement('div');
                 reportElement.classList.add('report');
                 reportElement.innerHTML = `
-                    <h3>Cheater: ${report.name}</h3>
+                    <h3>${report.name}</h3>
                     <p>Game: ${report.game}</p>
                     <p>Reported for: ${report.reason}</p>
                     <p>Timestamp: ${report.timestamp}</p>
                 `;
+                reportElement.onclick = () => openModal(report);
                 reportList.appendChild(reportElement);
             });
+
             updatePagination();
         }
 
-        function updateTotalCheaters() {
-            document.getElementById('totalCheaters').textContent = `Total Cheaters Reported: ${reportsData.length}`;
+        function openModal(report) {
+            document.getElementById("modalName").textContent = `Cheater: ${report.name}`;
+            document.getElementById("modalGame").textContent = `Game: ${report.game}`;
+            document.getElementById("modalReason").textContent = `Reported for: ${report.reason}`;
+            document.getElementById("modalTimestamp").textContent = `Timestamp: ${report.timestamp}`;
+
+            document.getElementById("reportModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("reportModal").style.display = "none";
         }
 
         function sortByName(ascending = true) {
             reportsData.sort((a, b) => {
-                let nameA = a.name.toLowerCase();
-                let nameB = b.name.toLowerCase();
+                const nameA = a.name.toLowerCase();
+                const nameB = b.name.toLowerCase();
                 return ascending ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
             });
             renderReports();
@@ -344,6 +402,7 @@
                     <p>Reported for: ${report.reason}</p>
                     <p>Timestamp: ${report.timestamp}</p>
                 `;
+                reportElement.onclick = () => openModal(report);
                 reportList.appendChild(reportElement);
             });
         }
@@ -358,6 +417,9 @@
             document.getElementById('prevPage').disabled = currentPage === 1;
             document.getElementById('nextPage').disabled = currentPage === totalPages;
         }
+
+        // Initial render
+        renderReports();
     </script>
 </body>
 </html>
