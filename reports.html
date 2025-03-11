@@ -81,18 +81,25 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
             text-align: left;
             width: 95%;
-            transition: all 0.3s ease; /* Smooth transition for hover effect */
+            transition: all 0.3s ease; /* Smooth transition for hover and click effects */
         }
         
         .report:hover {
             background-color: #444444; /* Lighter shade for hover effect */
             box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+            transform: translateY(-5px); /* Move the element up slightly */
+        }
+        
+        .report:active {
+            transform: translateY(2px); /* Slightly move down when clicked */
+            background-color: #333333; /* Even darker shade when clicked */
         }
         
         .report h3 {
             margin-bottom: 10px;
             font-size: 20px;
         }
+
 
         /* Footer */
         footer {
