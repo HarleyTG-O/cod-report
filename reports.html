@@ -694,76 +694,8 @@
         </footer>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            sortByName(true);  // A-Z (ascending) by default on page load
-        });
-        
-        function searchReports() {
-            var input, filter, reportList, reports, h3, i, txtValue, resultsFound = false;
-            input = document.getElementById('searchInput');
-            filter = input.value.toUpperCase();
-            reportList = document.getElementById('reportList');
-            reports = reportList.getElementsByClassName('report');
-            
-            // Clear previous no-result card if present
-            var existingNoResultCard = document.querySelector('.no-result-card');
-            if (existingNoResultCard) {
-                existingNoResultCard.remove();
-            }
-        
-            // Loop through all report divs and hide those that don't match the search query
-            for (i = 0; i < reports.length; i++) {
-                h3 = reports[i].getElementsByTagName('h3')[0];
-                if (h3) {
-                    txtValue = h3.textContent || h3.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        reports[i].style.display = ""; // Show the report
-                        resultsFound = true;
-                    } else {
-                        reports[i].style.display = "none"; // Hide the report
-                    }
-                }
-            }
-        
-            // If no result is found, show "No cheater by that name here!" card styled as a report card
-            if (!resultsFound && filter !== "") {
-                var noResultCard = document.createElement('div');
-                noResultCard.classList.add('report'); // Apply report card styling
-                noResultCard.innerHTML = '<h3>Cheater Report(s) Not Found</h3><p>No reports exist for this player. Please verify the name and try again.</p>';
-                reportList.appendChild(noResultCard);
-            }
-        }
-            function updateTotalCheaters() {
-        const reports = document.querySelectorAll('.report');
-        document.getElementById('totalCheaters').textContent = `Total Cheaters Reported: ${reports.length}`;
-    }
-
-    // Call the function on page load
-    updateTotalCheaters();
-
-        function sortByName(ascending = true) {
-            let reportList = document.getElementById("reportList");
-            let reports = Array.from(reportList.children);
-            reports.sort((a, b) => {
-                let nameA = a.querySelector("h3").textContent.toLowerCase();
-                let nameB = b.querySelector("h3").textContent.toLowerCase();
-                return ascending ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
-            });
-            reports.forEach(report => reportList.appendChild(report));
-        }
-
-        function sortByTimestamp(ascending) {
-            let reportList = document.getElementById("reportList");
-            let reports = Array.from(reportList.children);
-            reports.sort((a, b) => {
-                let timeA = new Date(a.querySelector("p:last-child").textContent.split(": ")[1]);
-                let timeB = new Date(b.querySelector("p:last-child").textContent.split(": ")[1]);
-                return ascending ? timeB - timeA : timeA - timeB;
-            });
-            reports.forEach(report => reportList.appendChild(report));
-        }
- {
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
         sortByName(true);  // A-Z (ascending) by default on page load
         updateTotalCheaters();
         
