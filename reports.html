@@ -161,7 +161,60 @@
             background-color: #ffcc00;
             color: black;
         }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0); /* Black background */
+            background-color: rgba(0, 0, 0, 0.4); /* Faded background */
+            padding-top: 60px;
+        }
+        
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #ffcc00;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
     </style>
+    <!-- Modal Structure -->
+<div id="reportModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modalCheaterName"></h3>
+        <p id="modalGame"></p>
+        <p id="modalCheaterReportedFor"></p>
+        <p id="modalNotes"></p>
+        <p id="modalSubmittedBy"></p>
+        <p id="modalTimestamp"></p>
+    </div>
+</div>
+
 </head>
 <body>
     <div class="container">
@@ -710,7 +763,130 @@
             });
             reports.forEach(report => reportList.appendChild(report));
         }
-    </script>
-    </script>
+ {
+        sortByName(true);  // A-Z (ascending) by default on page load
+        updateTotalCheaters();
+        
+        // Add event listener for search input
+        const input = document.getElementById('searchInput');
+        input.addEventListener('input', searchReports);
+
+        // Add event listener for sorting
+        document.getElementById('sortByNameBtn').addEventListener('click', () => sortByName(true));
+        document.getElementById('sortByTimestampBtn').addEventListener('click', () => sortByTimestamp(true));
+    });
+
+    // Function to search for reports
+    function searchReports() {
+        var input, filter, reportList, reports, h3, i, txtValue, resultsFound = false;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        reportList = document.getElementById('reportList');
+        reports = reportList.getElementsByClassName('report');
+
+        // Clear previous no-result card if present
+        var existingNoResultCard = document.querySelector('.no-result-card');
+        if (existingNoResultCard) {
+            existingNoResultCard.remove();
+        }
+
+        // Loop through all report divs and hide those that don't match the search query
+        for (i = 0; i < reports.length; i++) {
+            h3 = reports[i].getElementsByTagName('h3')[0];
+            if (h3) {
+                txtValue = h3.textContent || h3.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    reports[i].style.display = ""; // Show the report
+                    resultsFound = true;
+                } else {
+                    reports[i].style.display = "none"; // Hide the report
+                }
+            }
+        }
+
+        // If no result is found, show "No cheater by that name here!" card styled as a report card
+        if (!resultsFound && filter !== "") {
+            var noResultCard = document.createElement('div');
+            noResultCard.classList.add('report'); // Apply report card styling
+            noResultCard.innerHTML = '<h3>Cheater Report(s) Not Found</h3><p>No reports exist for this player. Please verify the name and try again.</p>';
+            reportList.appendChild(noResultCard);
+        }
+    }
+
+    // Function to update total cheaters count
+    function updateTotalCheaters() {
+        const reports = document.querySelectorAll('.report');
+        document.getElementById('totalCheaters').textContent = `Total Cheaters Reported: ${reports.length}`;
+    }
+
+    // Function to sort reports by name
+    function sortByName(ascending = true) {
+        let reportList = document.getElementById("reportList");
+        let reports = Array.from(reportList.children);
+        reports.sort((a, b) => {
+            let nameA = a.querySelector("h3").textContent.toLowerCase();
+            let nameB = b.querySelector("h3").textContent.toLowerCase();
+            return ascending ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+        });
+        reports.forEach(report => reportList.appendChild(report));
+    }
+
+    // Function to sort reports by timestamp
+    function sortByTimestamp(ascending = true) {
+        let reportList = document.getElementById("reportList");
+        let reports = Array.from(reportList.children);
+        reports.sort((a, b) => {
+            let timeA = new Date(a.querySelector("p:last-child").textContent.split(": ")[1]);
+            let timeB = new Date(b.querySelector("p:last-child").textContent.split(": ")[1]);
+            return ascending ? timeB - timeA : timeA - timeB;
+        });
+        reports.forEach(report => reportList.appendChild(report));
+    }
+
+    // Event listener for modals
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("reportModal");
+        const closeModal = document.querySelector(".close");
+
+        // Add event listener to each report
+        const reports = document.querySelectorAll(".report");
+        reports.forEach(report => {
+            report.addEventListener("click", () => {
+                // Populate the modal with report details
+                const cheaterName = report.querySelector("h3").textContent;
+                const game = report.querySelector("p:nth-child(2)").textContent;
+                const cheaterReportedFor = report.querySelector("p:nth-child(3)").textContent;
+                const notes = report.querySelector("p:nth-child(4)").textContent;
+                const submittedBy = report.querySelector("p:nth-child(5)").textContent;
+                const timestamp = report.querySelector("p:nth-child(6)").textContent;
+
+                // Set the modal content
+                document.getElementById("modalCheaterName").textContent = cheaterName;
+                document.getElementById("modalGame").textContent = game;
+                document.getElementById("modalCheaterReportedFor").textContent = cheaterReportedFor;
+                document.getElementById("modalNotes").textContent = notes;
+                document.getElementById("modalSubmittedBy").textContent = submittedBy;
+                document.getElementById("modalTimestamp").textContent = timestamp;
+
+                // Show the modal
+                modal.style.display = "block";
+            });
+        });
+
+        // Close the modal when clicking on the close button
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Close the modal when clicking outside the modal content
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+</script>
+
+
 </body>
 </html>
