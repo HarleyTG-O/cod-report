@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoD Cheater Reports - [Basic]</title>
+  <style>
+    body {
+      background-color: #fff;
+      color: #000;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .notification {
+      background-color: #eee;
+      padding: 10px;
+      margin: 20px 0;
+      border: 1px solid #000;
+      text-align: center;
+    }
+
+    .content {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+      margin: 10px 0;
+    }
+
+    .info-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .info-card {
+      width: 48%;
+      border: 1px solid #000;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 6px 12px;
+      margin-top: 10px;
+      border: 1px solid #000;
+      background-color: #fff;
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 40px;
+      border-top: 1px solid #000;
+      padding-top: 20px;
+    }
+
+    footer a {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      max-width: 600px;
+      width: 90%;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header h2 {
+      margin: 0 0 10px;
+    }
+
+    .modal-body p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .close-btn {
+      margin-top: 15px;
+      background-color: #000;
+      color: #fff;
+      padding: 8px 14px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Call of Duty Cheater Reports [Basic]</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="report.html">Report a Cheater</a></li>
+          <li><a href="reports.html">View Reports</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="notification">
+      🚧 <span>We're currently under construction. This is the Basic Build. Join our
+        <a href="https://discord.gg/qwxFqfsNdR" style="color: #000; font-weight: bold;">Discord</a>
+        for updates and support.
+        <a href="/" style="color: #000; font-weight: bold;">Go back to the main version</a></span> 🚧
+    </div>
+
+    <div class="content">
+      <h2>Welcome to the Call of Duty Cheater Reporting System</h2>
+      <img src="Images/logo.png" alt="Logo" class="logo">
+
+      <div class="info-cards">
+        <div class="info-card">
+          <h3>Terms of Service</h3>
+          <p>We recommend viewing on a desktop for the best experience.</p>
+          <button class="btn" id="tosBtn">Read Terms of Service</button>
+        </div>
+        <div class="info-card">
+          <h3>Privacy Policy</h3>
+          <p>For optimal viewing, please access on a desktop.</p>
+          <button class="btn" id="policyBtn">Read Privacy Policy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOS Modal -->
+    <div id="tosModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Terms of Service</h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            <strong>Terms of Service (ToS)</strong><br>
+            <strong>1. Introduction</strong><br>
+            Welcome to COD Cheater Report Online (cod.cheater-report.online)... [Full ToS Content Here]
+          </p>
+        </div>
+        <button class="close-btn" id="closeTosBtn">Close</button>
+      </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="policyModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Privacy Policy</h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            <strong>Privacy Policy</strong><br>
+            <strong>1. Information Collection</strong><br>
+            We collect personal information when you report a cheater... [Full Policy Content Here]
+          </p>
+        </div>
+        <button class="close-btn" id="closePolicyBtn">Close</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 COD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Modal Logic
+    const tosBtn = document.getElementById("tosBtn");
+    const policyBtn = document.getElementById("policyBtn");
+    const tosModal = document.getElementById("tosModal");
+    const policyModal = document.getElementById("policyModal");
+    const closeTosBtn = document.getElementById("closeTosBtn");
+    const closePolicyBtn = document.getElementById("closePolicyBtn");
+
+    tosBtn.addEventListener("click", () => tosModal.style.display = "flex");
+    policyBtn.addEventListener("click", () => policyModal.style.display = "flex");
+    closeTosBtn.addEventListener("click", () => tosModal.style.display = "none");
+    closePolicyBtn.addEventListener("click", () => policyModal.style.display = "none");
+
+    // Optional: Close modal on outside click
+    window.addEventListener("click", (e) => {
+      if (e.target === tosModal) tosModal.style.display = "none";
+      if (e.target === policyModal) policyModal.style.display = "none";
+    });
+  </script>
+</body>
+</html>
