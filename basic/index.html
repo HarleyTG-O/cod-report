@@ -125,44 +125,44 @@
       align-items: center;
     }
 
-        /* Modal styles */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
+            z-index: 1;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
+            overflow: auto;
+            background-color: rgb(0, 0, 0); /* Black background */
+            background-color: rgba(0, 0, 0, 0.4); /* Faded background */
+            padding-top: 60px;
         }
 
         .modal-content {
-            background-color: #fff;
-            padding: 10px; /* Reduced padding */
-            border-radius: 8px;
-            width: 40%; /* Smaller width */
-            max-width: 400px; /* Even smaller max width */
+            background-color: #ffffff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            color: #000;
         }
 
-        .modal-header {
-            font-size: 18px; /* Smaller font size */
-            color: #ff0000;
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
         }
 
-        .modal-body {
-            color: #fff;
-            font-size: 12px; /* Much smaller font size for content */
-        }
-
-        .close-btn {
-            background-color: #ff0000;
-            color: #fff;
-            padding: 6px 10px; /* Smaller padding */
-            border-radius: 8px;
+        .close:hover,
+        .close:focus {
+            color: #d40000;
+            text-decoration: none;
             cursor: pointer;
-            margin-top: 10px;
         }
   </style>
 </head>
