@@ -95,6 +95,25 @@
             font-size: 22px;
         }
 
+        .report {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .report:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-5px);
+        }
+
+        .report h3 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+
         .btn {
             display: inline-block;
             background-color: #d40000;
@@ -128,6 +147,19 @@
             text-decoration: underline;
         }
     </style>
+        <!-- Modal Structure -->
+<div id="reportModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modalCheaterName"></h3>
+        <p id="modalGame"></p>
+        <p id="modalCheaterReportedFor"></p>
+        <p id="modalNotes"></p>
+        <p id="modalSubmittedBy"></p>
+        <p id="modalTimestamp"></p>
+    </div>
+</div>
+
 </head>
 <body>
     <div class="container">
