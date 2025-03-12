@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <title>View Reports - CoD Cheater Reports [Basic]</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header, footer {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #000;
+            background-color: #f5f5f5;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        nav ul li a.disabled {
+            color: #888;
+            pointer-events: none;
+        }
+
+        .notification {
+            background-color: #eee;
+            padding: 15px;
+            margin: 20px 0;
+            border: 1px solid #000;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .content {
+            flex-grow: 1;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .report-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .report-card:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-5px);
+        }
+
+        .report-card h3 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #d40000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ffcc00;
+            color: #000;
+        }
+
+        footer {
+            border-top: 1px solid #000;
+            background-color: #f5f5f5;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #d40000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>View Reports - CoD Cheater Reports [Basic]</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="report.html">Report a Cheater</a></li>
+                    <li><a href="reports.html">View Reports</a></li>
+                    <li><a href="support.html">Support</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="notification">
+            🚧 This website is currently under construction. Please join our 
+            <a href="https://discord.gg/qwxFqfsNdR" target="_blank">Discord</a> for updates and support. 🚧
+        </div>
+
+        <div class="content">
+            <div class="report-card">
+                <h3>Recent Reports</h3>
+                <p>List of recent cheater reports will be displayed here.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 COD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
+        </footer>
+    </div>
+</body>
+</html>
