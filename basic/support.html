@@ -159,5 +159,28 @@
             <p>&copy; 2025 COD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
         </footer>
     </div>
+        <script>
+        // Grab the User-Agent
+        const userAgent = navigator.userAgent;
+        const userAgentText = document.getElementById('userAgentText');
+        const copyUserAgentBtn = document.getElementById('copyUserAgentBtn');
+
+        // Display the User-Agent text on the page
+        userAgentText.textContent = userAgent;
+
+        // Clipboard copy functionality
+        copyUserAgentBtn.addEventListener('click', () => {
+            // Create a temporary input element to copy the User-Agent
+            const tempInput = document.createElement('input');
+            tempInput.value = userAgent;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Notify the user that it has been copied
+            alert('User-Agent copied to clipboard!');
+        });
+    </script>
 </body>
 </html>
