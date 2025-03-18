@@ -22,7 +22,7 @@
 
         .container {
             width: 90%;
-            max-width: 800px;
+            max-width: 1000px;
             height: 90vh;
             background-color: #1e1e1e;
             border-radius: 12px;
@@ -77,20 +77,17 @@
 
         .info-cards {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .info-card {
             background-color: #333;
             padding: 15px;
             border-radius: 8px;
-            width: 100%;
-            height: 150px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
+            width: 48%;
+            text-align: left;
             border: 1px solid #000;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -109,8 +106,7 @@
         .info-card p {
             margin: 0;
             font-size: 16px;
-            flex-grow: 1;
-            padding-left: 20px;
+            padding-top: 10px;
         }
 
         .btn {
@@ -194,7 +190,7 @@
                 </div>
                 <div class="info-card">
                     <h3>Docs</h3>
-                    <p>Docs of the project</p>
+                    <p>Documentation of the project.</p>
                     <a href="/docs" class="btn">Go to Docs</a>
                 </div>
             </div>
