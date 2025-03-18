@@ -320,14 +320,13 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            loadingScreen.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Enable scrolling after loading
-        }, 10000); // 10 seconds delay
+      document.body.style.overflow = 'hidden'; // Disable scrolling initially
+      setTimeout(function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          loadingScreen.style.display = 'none';
+          document.body.style.overflow = 'auto'; // Enable scrolling after loading
+      }, 10000); // 10 seconds delay
     });
-
-
     
     // Modal Logic
     const tosBtn = document.getElementById("tosBtn");
