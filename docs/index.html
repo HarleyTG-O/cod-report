@@ -81,9 +81,28 @@
       margin: 10px 0;
     }
 
-    section {
-      margin-bottom: 2rem;
+    /* Flexbox for info cards side by side */
+    .info-cards {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: nowrap; /* Ensure they stay side by side without wrapping */
+    }
+
+    .info-card {
+      background-color: #fff;
+      color: #000;
+      padding: 15px;
+      border-radius: 8px;
+      width: 48%; /* Cards take up 48% of the width */
       text-align: left;
+      border: 1px solid #000;
+    }
+
+    .info-card:hover {
+      background-color: #eee; /* Lighter shade for hover effect */
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+      transform: translateY(-5px); /* Move the element up slightly */
     }
 
     footer {
@@ -121,12 +140,22 @@
 
       <section>
         <h3>Available Documentation:</h3>
-        <ul>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="removal-policy.html">Cheater Report Removal Policy</a></li>
-          <li><a href="roadmap.html">Project Roadmap</a></li>
-          <li><a href="tos.html">Terms of Service (ToS)</a></li>
-        </ul>
+          <div class="info-card">
+            <h4><a href="tos.html">Terms of Service (ToS)</a></h4>
+          </div>
+        <div class="info-cards">
+          <div class="info-card">
+            <h4><a href="privacy-policy.html">Privacy Policy</a></h4>
+          </div>
+          <div class="info-card">
+            <h4><a href="removal-policy.html">Cheater Report Removal Policy</a></h4>
+          </div>
+        </div>
+        <div class="info-cards">
+          <div class="info-card">
+            <h4><a href="roadmap.html">Project Roadmap</a></h4>
+          </div>
+        </div>
       </section>
     </div>
 
