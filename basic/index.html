@@ -319,10 +319,12 @@
   </div>
 
   <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const loadingScreen = document.getElementById('loading-screen');
-          loadingScreen.style.display = 'none';
-      });
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.display = 'none';
+        }, 10000); // 10 seconds delay
+    });
 
     
     // Modal Logic
