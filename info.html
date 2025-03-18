@@ -75,38 +75,26 @@
             overflow-y: auto;
         }
 
+        /* Flexbox for info cards side by side */
         .info-cards {
             display: flex;
             justify-content: space-between;
             gap: 20px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* Ensure they stay side by side without wrapping */
         }
 
         .info-card {
             background-color: #333;
             padding: 15px;
             border-radius: 8px;
-            width: 48%;
+            width: 48%; /* Cards take up 48% of the width */
             text-align: left;
-            border: 1px solid #000;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .info-card:hover {
-            background-color: #444444;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .info-card h3 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        .info-card p {
-            margin: 0;
-            font-size: 16px;
-            padding-top: 10px;
+            background-color: #444444; /* Lighter shade for hover effect */
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+            transform: translateY(-5px); /* Move the element up slightly */
         }
 
         .btn {
