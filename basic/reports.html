@@ -890,6 +890,15 @@
         </footer>
     </div>
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.style.overflow = 'hidden'; // Disable scrolling initially
+      setTimeout(function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          loadingScreen.style.display = 'none';
+          document.body.style.overflow = 'auto'; // Enable scrolling after loading
+      }, 10000); // 10 seconds delay
+    });
+        
     document.addEventListener("DOMContentLoaded", () => {
         sortByName(true);  // A-Z (ascending) by default on page load
         updateTotalCheaters();
