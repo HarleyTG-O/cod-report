@@ -164,3 +164,131 @@
             color: #000;
         }
     </style
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Call of Duty Cheater Reports [Basic]</h1>
+      <nav>
+          <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="info.html">Info</a></li>
+              <li><a href="report.html">Report a Cheater</a></li>
+              <li><a href="reports.html">View Reports</a></li>
+              <li><a href="support.html">Support</a></li>
+          </ul>
+      </nav>
+    </header>
+
+    <div class="notification">
+      🚧 <span>We're currently under construction. This is the Basic Build. Join our
+        <a href="https://discord.gg/qwxFqfsNdR" style="color: #000; font-weight: bold;">Discord</a>
+        for updates and support.
+        <a href="/" style="color: #000; font-weight: bold;">Go back to the main version</a></span> 🚧
+    </div>
+
+    <div class="content">
+      <h2>Welcome to the Call of Duty Cheater Reporting System</h2>
+      <img src="Images/logo.png" alt="Logo" class="logo">
+
+      <div class="info-cards">
+        <div class="info-card">
+          <h3>Terms of Service</h3>
+          <p>We recommend viewing on a desktop for the best experience.</p>
+          <button class="btn" id="tosBtn">Read Terms of Service</button>
+        </div>
+        <div class="info-card">
+          <h3>Privacy Policy</h3>
+          <p>For optimal viewing, please access on a desktop.</p>
+          <button class="btn" id="policyBtn">Read Privacy Policy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOS Modal -->
+    <div id="tosModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Terms of Service</h2>
+        </div>
+        <div class="modal-body">
+                    <p>
+                        <strong>Terms of Service (ToS)</strong><br>
+                        <strong>1. Introduction</strong><br>
+                        Welcome to COD Cheater Report Online (cod.cheater-report.online). By accessing or using our platform, you agree to these Terms of Service. Please read them carefully. This platform is designed for reporting known cheats in Call of Duty games.<br>
+                        <strong>2. User Responsibilities</strong><br>
+                        - Users must provide accurate and truthful information when submitting reports regarding cheats in Call of Duty games.<br>
+                        - Misuse or violation of these terms, including false reporting or attempting to exploit the system, may result in the removal of reports or temporary bans from using the platform.<br>
+                        <strong>3. Prohibited Activities</strong><br>
+                        - Users may not engage in any illegal activities on the platform.<br>
+                        - Exploiting, abusing, or manipulating the reporting system is strictly prohibited.<br>
+                        - Submitting false or misleading reports is forbidden and may lead to penalties, including removal of reports or banning from the platform.<br>
+                        <strong>4. Report Submission</strong><br>
+                        - Reports should only be submitted for known cheats or cheating activities in Call of Duty games.<br>
+                        - We reserve the right to remove any report that does not meet our criteria or violates these terms.<br>
+                        - Any attempts to manipulate or abuse the reporting system may result in consequences, including being banned from the platform.<br>
+                        <strong>5. Changes to Terms</strong><br>
+                        - We may update these Terms of Service at any time.<br>
+                        - Continued use of COD Cheater Report Online after any changes constitutes acceptance of the updated terms.<br><br>
+                        For further inquiries, please contact us through our official channels.
+                    </p>
+        </div>
+        <button class="close-btn" id="closeTosBtn">Close</button>
+      </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="policyModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Privacy Policy</h2>
+        </div>
+        <div class="modal-body">
+            <p>
+                <strong>Privacy Policy</strong><br>
+                <strong>1. Information Collection</strong><br>
+                We collect personal information when you report a cheater, including your Discord username, Activision ID, and details about the reported cheater. This information is used solely for the purpose of processing your report and ensuring the integrity of the platform.<br>
+                <strong>2. Data Usage</strong><br>
+                Your information will not be shared with third parties without your consent, except as required by law or to protect the integrity of the platform.<br>
+                <strong>3. Cookies and Tracking</strong><br>
+                We use cookies to improve your experience on our website. These cookies may track your activity for analytics purposes.<br>
+                <strong>4. Data Retention</strong><br>
+                Your data will be stored in our secure database for as long as necessary to process reports and comply with legal obligations.<br>
+                <strong>5. Security</strong><br>
+                We take reasonable steps to protect your personal data from unauthorized access or disclosure. However, no method of transmission over the internet is 100% secure.<br>
+                <strong>6. Changes to Privacy Policy</strong><br>
+                We may update this Privacy Policy at any time. Any changes will be communicated via the platform.<br><br>
+                For further inquiries regarding our Privacy Policy, please contact us.
+            </p>
+        </div>
+        <button class="close-btn" id="closePolicyBtn">Close</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 CoD Cheater Reports. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Modal Logic
+    const tosBtn = document.getElementById("tosBtn");
+    const policyBtn = document.getElementById("policyBtn");
+    const tosModal = document.getElementById("tosModal");
+    const policyModal = document.getElementById("policyModal");
+    const closeTosBtn = document.getElementById("closeTosBtn");
+    const closePolicyBtn = document.getElementById("closePolicyBtn");
+
+    tosBtn.addEventListener("click", () => tosModal.style.display = "flex");
+    policyBtn.addEventListener("click", () => policyModal.style.display = "flex");
+    closeTosBtn.addEventListener("click", () => tosModal.style.display = "none");
+    closePolicyBtn.addEventListener("click", () => policyModal.style.display = "none");
+
+    // Optional: Close modal on outside click
+    window.addEventListener("click", (e) => {
+      if (e.target === tosModal) tosModal.style.display = "none";
+      if (e.target === policyModal) policyModal.style.display = "none";
+    });
+  </script>
+</body>
+</html>
