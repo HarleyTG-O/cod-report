@@ -319,6 +319,12 @@
   </div>
 
   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          loadingScreen.style.display = 'none';
+      });
+
+    
     // Modal Logic
     const tosBtn = document.getElementById("tosBtn");
     const policyBtn = document.getElementById("policyBtn");
