@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <title>CoD Cheater Reports - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Full height layout */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212; /* Dark background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+            overflow: hidden; /* Hide scrollbar */
+        }
+
+        /* Centered card container with 90% height */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            height: 90vh; /* 90% of the viewport height */
+            background-color: #1e1e1e; /* Dark gray card */
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevents content overflow */
+        }
+
+        /* Header styling */
+        header {
+            background-color: #ff0000;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        nav ul li a.disabled {
+            color: #888;
+            pointer-events: none;
+        }
+
+        /* Notification Banner */
+        .notification {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 15px;
+            margin: 10px auto;
+            width: 90%;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Main content area (flexible) */
+        .content {
+            flex-grow: 1; /* Expands to fill space */
+            padding: 20px;
+            overflow-y: auto; /* Enables scrolling if needed */
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ffcc00;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            padding: 10px; /* Reduced padding */
+            border-radius: 8px;
+            width: 40%; /* Smaller width */
+            max-width: 400px; /* Even smaller max width */
+        }
+
+        .modal-header {
+            font-size: 18px; /* Smaller font size */
+            color: #ff0000;
+        }
+
+        .modal-body {
+            color: #fff;
+            font-size: 12px; /* Much smaller font size for content */
+        }
+
+        .close-btn {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 6px 10px; /* Smaller padding */
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 10px;
+            background-color: #ff0000;
+            text-align: center;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #ffcc00;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Flexbox for info cards side by side */
+        .info-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: nowrap; /* Ensure they stay side by side without wrapping */
+        }
+
+        .info-card {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            width: 48%; /* Cards take up 48% of the width */
+            text-align: left;
+        }
+
+        .info-card:hover {
+            background-color: #444444; /* Lighter shade for hover effect */
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+            transform: translateY(-5px); /* Move the element up slightly */
+        }
+
+        /* Loading Screen Styles */
+        #loading-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #ff0000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loading-screen p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Call of Duty Cheater Reporting</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="info.html">Info</a></li>
+                    <li><a href="report.html">Report a Cheater</a></li>
+                    <li><a href="reports.html">View Reports</a></li>
+                    <li><a href="support.html">Support</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Notification Banner -->
+        <div class="notification">
+            🚧 <span>We're currently under construction. Join our 
+                <a href="https://discord.gg/qwxFqfsNdR" style="color: #000; font-weight: bold;">Discord</a> 
+                for updates and support.🚧</span>
+        </div>
+
+
+
+        <!-- Main Content -->
+        <div class="content">
+            <h2>Welcome to the Call of Duty Cheater Reporting System</h2>
+            <img src="Images/logo.png" alt="Logo" class="logo">
+        
+            <!-- Info Cards for ToS and Privacy Policy -->
+            <div class="info-cards">
+            <div class="info-card">
+                <h3>Terms of Service</h3>
+                <p>We recommend viewing on a desktop for the best experience.</p>
+                <a href="#" class="btn" id="tosBtn">Read Terms of Service</a>
+            </div>
+            <div class="info-card">
+                <h3>Privacy Policy</h3>
+                <p>For optimal viewing, please access on a desktop.</p>
+                <a href="#" class="btn" id="policyBtn">Read Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+        <!-- Modal for ToS -->
+        <div id="tosModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Terms of Service</h2>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <strong>Terms of Service (ToS)</strong><br>
+                        <strong>1. Introduction</strong><br>
+                        Welcome to COD Cheater Report Online (cod.cheater-report.online). By accessing or using our platform, you agree to these Terms of Service. Please read them carefully. This platform is designed for reporting known cheats in Call of Duty games.<br>
+                        <strong>2. User Responsibilities</strong><br>
+                        - Users must provide accurate and truthful information when submitting reports regarding cheats in Call of Duty games.<br>
+                        - Misuse or violation of these terms, including false reporting or attempting to exploit the system, may result in the removal of reports or temporary bans from using the platform.<br>
+                        <strong>3. Prohibited Activities</strong><br>
+                        - Users may not engage in any illegal activities on the platform.<br>
+                        - Exploiting, abusing, or manipulating the reporting system is strictly prohibited.<br>
+                        - Submitting false or misleading reports is forbidden and may lead to penalties, including removal of reports or banning from the platform.<br>
+                        <strong>4. Report Submission</strong><br>
+                        - Reports should only be submitted for known cheats or cheating activities in Call of Duty games.<br>
+                        - We reserve the right to remove any report that does not meet our criteria or violates these terms.<br>
+                        - Any attempts to manipulate or abuse the reporting system may result in consequences, including being banned from the platform.<br>
+                        <strong>5. Changes to Terms</strong><br>
+                        - We may update these Terms of Service at any time.<br>
+                        - Continued use of COD Cheater Report Online after any changes constitutes acceptance of the updated terms.<br><br>
+                        For further inquiries, please contact us through our official channels.
+                    </p>
+                </div>
+                <button class="close-btn" id="closeTosBtn">Close</button>
+            </div>
+        </div>
+
+        <!-- Modal for Privacy Policy -->
+        <div id="policyModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Privacy Policy</h2>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <strong>Privacy Policy</strong><br>
+                        <strong>1. Information Collection</strong><br>
+                        We collect personal information when you report a cheater, including your Discord username, Activision ID, and details about the reported cheater. This information is used solely for the purpose of processing your report and ensuring the integrity of the platform.<br>
+                        <strong>2. Data Usage</strong><br>
+                        Your information will not be shared with third parties without your consent, except as required by law or to protect the integrity of the platform.<br>
+                        <strong>3. Cookies and Tracking</strong><br>
+                        We use cookies to improve your experience on our website. These cookies may track your activity for analytics purposes.<br>
+                        <strong>4. Data Retention</strong><br>
+                        Your data will be stored in our secure database for as long as necessary to process reports and comply with legal obligations.<br>
+                        <strong>5. Security</strong><br>
+                        We take reasonable steps to protect your personal data from unauthorized access or disclosure. However, no method of transmission over the internet is 100% secure.<br>
+                        <strong>6. Changes to Privacy Policy</strong><br>
+                        We may update this Privacy Policy at any time. Any changes will be communicated via the platform.<br><br>
+                        For further inquiries regarding our Privacy Policy, please contact us.
+                    </p>
+                </div>
+                <button class="close-btn" id="closePolicyBtn">Close</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 CoD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.overflow = 'hidden'; // Disable scrolling initially
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Enable scrolling after loading
+            }, 10000); // 10 seconds delay
+        });
+
+        // Modal control script
+        document.getElementById("tosBtn").addEventListener("click", function() {
+            document.getElementById("tosModal").style.display = "flex";
+        });
+
+        document.getElementById("policyBtn").addEventListener("click", function() {
+            document.getElementById("policyModal").style.display = "flex";
+        });
+
+        document.getElementById("closeTosBtn").addEventListener("click", function() {
+            document.getElementById("tosModal").style.display = "none";
+        });
+
+        document.getElementById("closePolicyBtn").addEventListener("click", function() {
+            document.getElementById("policyModal").style.display = "none";
+        });
+    </script>
+</body>
+</html>
