@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "report.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "info.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "reports.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "support.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "Images/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "styles.css",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/report.html", "dest": "/report.html" },
+    { "src": "/index.html", "dest": "/index.html" },
+    { "src": "/info.html", "dest": "/info.html" },
+    { "src": "/reports.html", "dest": "/reports.html" },
+    { "src": "/support.html", "dest": "/support.html" },
+    { "src": "/Images/(.*)", "dest": "/Images/$1" },
+    { "src": "/styles.css", "dest": "/styles.css" }
+  ]
+}
