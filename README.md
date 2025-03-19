@@ -1,5 +1,8 @@
-# cod-cheater-report
+📢 Call of Duty Cheater Report System (In Development)
 
-Deleloping a cod report user website so everyone can see Known cheaters
+We are currently developing a public website where players can view and report known Call of Duty cheaters (MW2, MW3, BO6, and more). 
+Our mission is to build a transparent, community-powered database to help keep the game fair and enjoyable for everyone.
 
-Currenly if u wanna help with our database join https://discord.gg/qwxFqfsNdR
+💬 Want to contribute or help grow the database?
+Join our community: https://discord.gg/qwxFqfsNdR
+
