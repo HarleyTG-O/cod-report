@@ -81,21 +81,44 @@
       margin: 10px 0;
     }
 
-    section {
-      margin-bottom: 2rem;
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      width: 300px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      background-color: #eee; /* Lighter shade for hover effect */
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+      transform: translateY(-5px); /* Move the element up slightly */
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      text-align: left;
     }
 
     .checkbox {
       font-family: monospace;
-      margin-left: 1rem;
     }
 
     .completed { color: #43a047; }
     .inprogress { color: #ffb300; }
-    .upcoming { color: #1976d2; }
-    ul {
-      padding-left: 2rem;
-    }
+    .comingsoon { color: #1976d2; }
 
     footer {
       margin-top: 40px;
@@ -130,88 +153,37 @@
       <h2>CoD Cheater Reports - Docs</h2>
       <img src="Images/logo.png" alt="Logo" class="logo">
 
-      <section>
-        <p>A community-driven cheater reporting platform for Call of Duty (MW2, MW3, BO6), integrated with a website and Discord bot.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>📅 Q1 - Foundation Phase (Jan–Mar 2025)</h3>
+          <h4 class="completed">✅ Completed</h4>
+          <ul>
+            <li class="checkbox completed">[x] Project repo setup with README, LICENSE, and CONTRIBUTING.md</li>
+            <li class="checkbox completed">[x] Database schema design (Reports, Users, Subscriptions)</li>
+            <li class="checkbox completed">[x] Discord Bot basic setup with /report, /sub, /unsub commands</li>
+            <li class="checkbox completed">[x] Validate Activision ID formats in bot</li>
+            <li class="checkbox completed">[x] Report embedding in Discord with buttons (Flag, Remove Report)</li>
+            <li class="checkbox completed">[x] Unique Report ID system with timestamp</li>
+            <li class="checkbox completed">[x] Report storage system using SQLite</li>
+            <li class="checkbox completed">[x] Basic website wireframe (HTML + PHP or React frontend)</li>
+            <li class="checkbox completed">[x] Frontend for viewing report database</li>
+          </ul>
+        </div>
 
-        <h2>📅 Q1 - Foundation Phase (Jan–Mar 2025)</h2>
-        <h3 class="completed">✅ Core System Initialization</h3>
-        <ul>
-          <li class="checkbox completed">[x] Project repo setup with README, LICENSE, and CONTRIBUTING.md</li>
-          <li class="checkbox completed">[x] Database schema design (Reports, Users, Subscriptions)</li>
-          <li class="checkbox completed">[x] Discord Bot basic setup with /report, /sub, /unsub commands</li>
-          <li class="checkbox completed">[x] Validate Activision ID formats in bot</li>
-          <li class="checkbox completed">[x] Report embedding in Discord with buttons (Flag, Remove Report)</li>
-          <li class="checkbox completed">[x] Unique Report ID system with timestamp</li>
-          <li class="checkbox completed">[x] Report storage system using SQLite</li>
-          <li class="checkbox completed">[x] Basic website wireframe (HTML + PHP or React frontend)</li>
-        </ul>
+        <div class="card">
+          <h3>🟡 In Progress</h3>
+          <ul>
+            <li class="checkbox inprogress">[ ] New features and updates to enhance the platform</li>
+          </ul>
+        </div>
 
-        <h3 class="inprogress">🟡 In Progress</h3>
-        <ul>
-          <li class="checkbox inprogress">[ ] Activision ID subscription alert system</li>
-          <li class="checkbox inprogress">[ ] Frontend for viewing report database</li>
-          <li class="checkbox inprogress">[ ] Discord OAuth2 login system for web</li>
-        </ul>
-        <p>Note: We could use funding and help within this development.</p>
-      </section>
-
-      <section>
-        <h2>📅 Q2 - Feature Expansion (Apr–Jun 2025)</h2>
-        <h3 class="upcoming">🆕 Advanced Website Integration</h3>
-        <ul>
-          <li class="checkbox upcoming">[ ] Report submission from website</li>
-          <li class="checkbox upcoming">[ ] Evidence upload system (image/video links or file hosting integration)</li>
-          <li class="checkbox upcoming">[ ] Public report browser with filter/search (Game, Date, Status)</li>
-          <li class="checkbox upcoming">[ ] Flag/Appeal system via website & Discord</li>
-          <li class="checkbox upcoming">[ ] User dashboard to manage own reports & subscriptions</li>
-        </ul>
-        <h3 class="upcoming">💡 Moderation & Community Tools</h3>
-        <ul>
-          <li class="checkbox upcoming">[ ] Report status system (Pending, Verified, Flagged, Removed)</li>
-          <li class="checkbox upcoming">[ ] Moderator role permissions in bot</li>
-          <li class="checkbox upcoming">[ ] Mod panel to review/verify reports</li>
-          <li class="checkbox upcoming">[ ] Community voting system on report credibility</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>📅 Q3 - Scalability & Performance (Jul–Sep 2025)</h2>
-        <h3 class="upcoming">📈 Optimization & Infrastructure</h3>
-        <ul>
-          <li class="checkbox upcoming">[ ] Migrate to PostgreSQL or scalable DB (optional)</li>
-          <li class="checkbox upcoming">[ ] Backend optimization (async bot handling, caching)</li>
-          <li class="checkbox upcoming">[ ] CDN integration for evidence media</li>
-          <li class="checkbox upcoming">[ ] Add analytics dashboard (reports per day, flag stats, etc.)</li>
-        </ul>
-        <h3 class="upcoming">🔐 Security Enhancements</h3>
-        <ul>
-          <li class="checkbox upcoming">[ ] Captcha on web forms</li>
-          <li class="checkbox upcoming">[ ] Rate limiting & spam detection on Discord bot and web</li>
-          <li class="checkbox upcoming">[ ] Auto-moderation for false report detection</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>📅 Q4 - Community & Ecosystem (Oct–Dec 2025)</h2>
-        <h3 class="upcoming">🌍 Community Ecosystem</h3>
-        <ul>
-          <li class="checkbox upcoming">[ ] Discord webhooks for report updates</li>
-          <li class="checkbox upcoming">[ ] API for third-party apps to fetch report data</li>
-          <li class="checkbox upcoming">[ ] Public documentation for developers</li>
-          <li class="checkbox upcoming">[ ] Translation/localization support</li>
-          <li class="checkbox upcoming">[ ] Partnership integration for other anti-cheat groups</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>🧭 Stretch Goals / Future Ideas</h2>
-        <ul>
-          <li class="checkbox">[ ] Mobile-friendly web UI (PWA version)</li>
-          <li class="checkbox">[ ] Reputation system for users based on report accuracy</li>
-          <li class="checkbox">[ ] Browser extension for submitting reports directly from game clips</li>
-          <li class="checkbox">[ ] AI-assisted detection/flagging using behavior analytics</li>
-        </ul>
-      </section>
+        <div class="card">
+          <h3>🟡 Coming Soon</h3>
+          <ul>
+            <li class="checkbox comingsoon">[ ] Additional improvements and features to be announced</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <footer>
