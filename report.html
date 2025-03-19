@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <title>Report a Cheater - CoD Cheater Reports</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Full height layout */
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Centered card container */
+        .container {
+            width: 95%;
+            max-width: 1000px;
+            height: 90vh;
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* Header styling */
+        header {
+            background-color: #ff0000;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        nav ul li a.disabled {
+            color: #888;
+            pointer-events: none;
+        }
+
+        /* Main content area */
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .form-container {
+            background-color: #2e2e2e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #3a3a3a;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffcc00;
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            padding: 10px;
+            background-color: #ff0000;
+            text-align: center;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #ffcc00;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Notification Banner */
+        .notification {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 15px;
+            margin: 10px auto;
+            width: 90%;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        /* Smaller card for Facebook and Off Discord Reporting */
+        .report-card {
+            background-color: #2e2e2e;
+            padding: 10px 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            width: 80%; /* Smaller width */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .report-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .report-card:hover {
+            background-color: #444444; /* Lighter shade for hover effect */
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+            transform: translateY(-5px); /* Move the element up slightly */
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Report a Cheater - CoD Cheater Reports</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="info.html">Info</a></li>
+                    <li><a href="report.html">Report a Cheater</a></li>
+                    <li><a href="reports.html">View Reports</a></li>
+                    <li><a href="support.html">Support</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Notification Banner -->
+        <div class="notification">
+            🚧 <span>This website is currently under construction. Please join our 
+                <a href="https://discord.gg/qwxFqfsNdR" style="color: #000; font-weight: bold;">Discord</a> 
+                for updates and support.</span> 🚧
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Reporting Cards -->
+            
+            <div class="report-card">
+                <h3>🚨 Report Call of Duty Cheaters on Discord</h3>
+                <p>Want to report cheaters directly on our Discord server? It's fast, simple, and secure. Click below to join our community and make a report:</p>
+                <a href="https://discord.gg/Ku6Bhfeenn" class="btn" target="_blank">🔗 Join Our Discord Server</a>
+            </div>
+
+            <div class="report-card">
+                <h3>🎯 DM-Based CoD Cheater Reporting — Made Easy</h3>
+                <p>Take down cheaters — one report at a time. Add our Discord bot and simply DM <code>!report</code> to instantly flag suspicious players.</p>
+                <p>⚔️ Fast. Anonymous. Effective. Your reports help us keep the Call of Duty community clean and fair.</p>
+                <a href="https://discord.com/oauth2/authorize?client_id=1345739340722208798" class="btn" target="_blank">💥 Add the Cheater Report Bot Now</a>
+            </div>
+
+            <div class="report-card">
+                <h3>💻 Report Call of Duty Cheaters Off Discord</h3>
+                <p>Prefer to submit a report off Discord? Use our quick and easy form to report cheaters from anywhere. Your input helps make the community a better place:</p>
+                <a href="https://forms.gle/nS8ENXtHqU5JM7YD8" class="btn" target="_blank">📝 Go to Report Form</a>
+            </div>
+
+        
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 CoD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>

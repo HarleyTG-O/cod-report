@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <title>CoD Cheater Reports - Info</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            height: 90vh;
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #ff0000;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Flexbox for info cards side by side */
+        .info-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: nowrap; /* Ensure they stay side by side without wrapping */
+        }
+
+        .info-card {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            width: 48%; /* Cards take up 48% of the width */
+            text-align: left;
+        }
+
+        .info-card:hover {
+            background-color: #444444; /* Lighter shade for hover effect */
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+            transform: translateY(-5px); /* Move the element up slightly */
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ffcc00;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 10px auto;
+        }
+
+        footer {
+            padding: 10px;
+            background-color: #ff0000;
+            text-align: center;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #ffcc00;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CoD Cheater Report - Info Page</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="info.html">Info</a></li>
+                    <li><a href="report.html">Report a Cheater</a></li>
+                    <li><a href="reports.html">View Reports</a></li>
+                    <li><a href="support.html">Support</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content">
+            <img src="Images/logo.png" alt="Logo" class="logo">
+
+            <h2>About This Project</h2>
+            <p>This project is dedicated to creating a reporting system for known cheaters in Call of Duty games. By reporting and viewing known cheaters, players can have a better gaming experience.</p>
+            
+            <h2>Project Versions</h2>
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>Main</h3>
+                    <p>The main version is the primary and stable version of the project. It includes all the latest features and updates.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Beta</h3>
+                    <p>The beta version is for testing new features before they are included in the main version. It may contain bugs and is not recommended for production use.</p>
+                    <a href="/beta" class="btn">Go to Beta</a>
+                </div>
+                <div class="info-card">
+                    <h3>Basic</h3>
+                    <p>The basic version is a simplified version of the project with essential features only. It is designed for users who need a lightweight version of the project.</p>
+                    <a href="/basic" class="btn">Go to Basic</a>
+                </div>
+                <div class="info-card">
+                    <h3>Docs</h3>
+                    <p>Documentation of the project.</p>
+                    <a href="/docs" class="btn">Go to Docs</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 CoD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
+        </footer>
+    </div>
+</body>
+</html>
