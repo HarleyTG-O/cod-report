@@ -732,6 +732,9 @@
         reportList = document.getElementById('reportList');
         reports = reportList.getElementsByClassName('report');
 
+        // Get URL input
+        var urlInput = document.getElementById('urlInput').value;
+
         // Clear previous no-result card if present
         var existingNoResultCard = document.querySelector('.no-result-card');
         if (existingNoResultCard) {
