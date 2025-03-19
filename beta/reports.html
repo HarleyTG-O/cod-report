@@ -722,6 +722,9 @@
         // Add event listener for sorting
         document.getElementById('sortByNameBtn').addEventListener('click', () => sortByName(true));
         document.getElementById('sortByTimestampBtn').addEventListener('click', () => sortByTimestamp(true));
+
+        // Add event listener for modals
+        initModalEvents();
     });
 
     // Function to search for reports
@@ -731,9 +734,6 @@
         filter = input.value.toUpperCase();
         reportList = document.getElementById('reportList');
         reports = reportList.getElementsByClassName('report');
-
-        // Get URL input
-        var urlInput = document.getElementById('urlInput').value;
 
         // Clear previous no-result card if present
         var existingNoResultCard = document.querySelector('.no-result-card');
@@ -759,6 +759,7 @@
         if (!resultsFound && filter !== "") {
             var noResultCard = document.createElement('div');
             noResultCard.classList.add('report'); // Apply report card styling
+            noResultCard.classList.add('no-result-card'); // Add class to identify the no-result card
             noResultCard.innerHTML = '<h3>Cheater Report(s) Not Found</h3><p>No reports exist for this player. Please verify the name and try again.</p>';
             reportList.appendChild(noResultCard);
         }
@@ -794,8 +795,8 @@
         reports.forEach(report => reportList.appendChild(report));
     }
 
-    // Event listener for modals
-    document.addEventListener("DOMContentLoaded", () => {
+    // Function to initialize modal event listeners
+    function initModalEvents() {
         const modal = document.getElementById("reportModal");
         const closeModal = document.querySelector(".close");
 
@@ -835,7 +836,7 @@
                 modal.style.display = "none";
             }
         });
-    });
+    }
 </script>
 
 
