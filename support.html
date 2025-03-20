@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="Images/logo.png">
     <title>Support - CoD Cheater Reports</title>
     <link rel="stylesheet" href="styles.css">
@@ -220,6 +220,47 @@
             color: #ccc;
             word-wrap: break-word;
         }
+
+        /* Loading Screen Styles */
+        #loading-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #ff0000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loading-screen p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #000;
+        }
+        @media (max-width: 600px) {
+          .report-container {
+            padding: 10px;
+            font-size: 14px;
+          }
+        }
     </style>
     <!--Start of Tawk.to Script-->
 <script type="text/javascript">
@@ -236,6 +277,11 @@ s0.parentNode.insertBefore(s1,s0);
 <!--End of Tawk.to Script-->
 </head>
 <body>
+
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
 
     <div class="container">
         <header>
@@ -284,6 +330,7 @@ s0.parentNode.insertBefore(s1,s0);
     </div>
 
     <script>
+        
         // Grab the User-Agent
         const userAgent = navigator.userAgent;
         const userAgentText = document.getElementById('userAgentText');
@@ -292,6 +339,14 @@ s0.parentNode.insertBefore(s1,s0);
         // Display the User-Agent text on the page
         userAgentText.textContent = userAgent;
 
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.overflow = 'hidden'; // Disable scrolling initially
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Enable scrolling after loading
+            }, 10000); // 10 seconds delay
+        });
         // Clipboard copy functionality
         copyUserAgentBtn.addEventListener('click', () => {
             // Create a temporary input element to copy the User-Agent
