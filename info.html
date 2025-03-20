@@ -7,6 +7,7 @@
     <title>CoD Cheater Reports - Info</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Full height layout */
         html, body {
             height: 100%;
             margin: 0;
@@ -14,24 +15,27 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #121212;
+            background-color: #121212; /* Dark background */
             font-family: Arial, sans-serif;
             text-align: center;
             color: #fff;
+            overflow: hidden; /* Hide scrollbar */
         }
 
+        /* Centered card container with 90% height */
         .container {
             width: 90%;
-            max-width: 1000px;
-            height: 90vh;
-            background-color: #1e1e1e;
+            max-width: 800px;
+            height: 90vh; /* 90% of the viewport height */
+            background-color: #1e1e1e; /* Dark gray card */
             border-radius: 12px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: hidden; /* Prevents content overflow */
         }
 
+        /* Header styling */
         header {
             background-color: #ff0000;
             padding: 20px;
@@ -69,10 +73,111 @@
             color: #ffcc00;
         }
 
+        nav ul li a.disabled {
+            color: #888;
+            pointer-events: none;
+        }
+
+        /* Notification Banner */
+        .notification {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 15px;
+            margin: 10px auto;
+            width: 90%;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Main content area (flexible) */
         .content {
-            flex-grow: 1;
+            flex-grow: 1; /* Expands to fill space */
             padding: 20px;
-            overflow-y: auto;
+            overflow-y: auto; /* Enables scrolling if needed */
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ffcc00;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            padding: 10px; /* Reduced padding */
+            border-radius: 8px;
+            width: 40%; /* Smaller width */
+            max-width: 400px; /* Even smaller max width */
+        }
+
+        .modal-header {
+            font-size: 18px; /* Smaller font size */
+            color: #ff0000;
+        }
+
+        .modal-body {
+            color: #fff;
+            font-size: 12px; /* Much smaller font size for content */
+        }
+
+        .close-btn {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 6px 10px; /* Smaller padding */
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 10px;
+            background-color: #ff0000;
+            text-align: center;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #ffcc00;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         /* Flexbox for info cards side by side */
@@ -97,45 +202,45 @@
             transform: translateY(-5px); /* Move the element up slightly */
         }
 
-        .btn {
-            display: inline-block;
-            background-color: #ff0000;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
+        /* Loading Screen Styles */
+        #loading-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
         }
 
-        .btn:hover {
-            background-color: #ffcc00;
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #ff0000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            display: block;
-            margin: 10px auto;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        footer {
+        #loading-screen p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #000;
+        }
+        @media (max-width: 600px) {
+          .report-container {
             padding: 10px;
-            background-color: #ff0000;
-            text-align: center;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-            margin-top: auto;
-        }
-
-        footer a {
-            color: #ffcc00;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
+            font-size: 14px;
+          }
         }
     </style>
 </head>
