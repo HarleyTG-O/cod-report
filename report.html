@@ -282,6 +282,11 @@
 </head>
 <body>
 
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
     <div class="container">
         <header>
             <h1>Report a Cheater - CoD Cheater Reports</h1>
@@ -334,6 +339,15 @@
             <p>&copy; 2025 CoD Cheater Report. All rights reserved. | <a href="https://discord.gg/qwxFqfsNdR">Join Discord</a></p>
         </footer>
     </div>
-
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.overflow = 'hidden'; // Disable scrolling initially
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Enable scrolling after loading
+            }, 10000); // 10 seconds delay
+        });
+        </script>
 </body>
 </html>
